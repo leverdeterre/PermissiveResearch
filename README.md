@@ -81,5 +81,7 @@ HeuristicScoringOperation
 HeurexactScoringOperation
 ```
 
+### TODO
+- Tolerate keyboard errors, very proximal letters can be tolerate.
 
 
