@@ -39,7 +39,7 @@
                                                      name:UIApplicationDidReceiveMemoryWarningNotification
                                                    object:nil];
         
-        [_datasource reloadData];
+        [_datasource rebuildDatabase];
     }
     
     return self;
@@ -47,7 +47,7 @@
 
 - (void)didReceiveMemoryWarning
 {
-    NSLog(@"didReceiveMemoryWarning");
+    JMOLog(@"didReceiveMemoryWarning");
     //Doint something ? if nos search operations in progress will could release all retained objects
 }
 
@@ -63,7 +63,7 @@
 - (void)setDatasource:(id<PermissiveResearchDatasource>)datasource
 {
     _datasource = datasource;
-    [_datasource reloadData];
+    [_datasource rebuildDatabase];
 }
 
 #pragma mark -
