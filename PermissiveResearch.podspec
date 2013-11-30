@@ -6,7 +6,7 @@ Pod::Spec.new do |s|
                 'Morissard Jérome' => 'morissardj@gmail.com'
         }
         s.ios.deployment_target = '4.3'
-        s.summary = 'Permissive Research'
+        s.summary = 'Permissive Research is a iOS search engine that allows errors in the searched element. '
         s.license      = { :type => 'MIT' }
         s.homepage = 'https://github.com/leverdeterre/PermissiveResearchr'
         s.source = {
