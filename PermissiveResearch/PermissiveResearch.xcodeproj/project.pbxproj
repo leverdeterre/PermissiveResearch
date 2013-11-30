@@ -1,0 +1,519 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C25DFA2E184A205A00B7BFA1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C25DFA2D184A205A00B7BFA1 /* Foundation.framework */; };
+		C25DFA30184A205A00B7BFA1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C25DFA2F184A205A00B7BFA1 /* CoreGraphics.framework */; };
+		C25DFA32184A205A00B7BFA1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C25DFA31184A205A00B7BFA1 /* UIKit.framework */; };
+		C25DFA3A184A205A00B7BFA1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C25DFA39184A205A00B7BFA1 /* main.m */; };
+		C25DFA3E184A205A00B7BFA1 /* JMOAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C25DFA3D184A205A00B7BFA1 /* JMOAppDelegate.m */; };
+		C25DFA44184A205A00B7BFA1 /* JMOViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C25DFA43184A205A00B7BFA1 /* JMOViewController.m */; };
+		C25DFA46184A205A00B7BFA1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C25DFA45184A205A00B7BFA1 /* Images.xcassets */; };
+		C25DFA4D184A205A00B7BFA1 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C25DFA4C184A205A00B7BFA1 /* XCTest.framework */; };
+		C25DFA4E184A205A00B7BFA1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C25DFA2D184A205A00B7BFA1 /* Foundation.framework */; };
+		C25DFA4F184A205A00B7BFA1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C25DFA31184A205A00B7BFA1 /* UIKit.framework */; };
+		C25DFA57184A205A00B7BFA1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C25DFA55184A205A00B7BFA1 /* InfoPlist.strings */; };
+		C25DFA59184A205A00B7BFA1 /* PermissiveResearchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C25DFA58184A205A00B7BFA1 /* PermissiveResearchTests.m */; };
+		C25DFA63184A20EA00B7BFA1 /* JMOViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C25DFA62184A20EA00B7BFA1 /* JMOViewController.xib */; };
+		C25DFA6F184A213300B7BFA1 /* PermissiveAlignementMethods.c in Sources */ = {isa = PBXBuildFile; fileRef = C25DFA65184A213200B7BFA1 /* PermissiveAlignementMethods.c */; };
+		C25DFA70184A213300B7BFA1 /* PermissiveObject.m in Sources */ = {isa = PBXBuildFile; fileRef = C25DFA68184A213300B7BFA1 /* PermissiveObject.m */; };
+		C25DFA71184A213300B7BFA1 /* PermissiveOperations.m in Sources */ = {isa = PBXBuildFile; fileRef = C25DFA6A184A213300B7BFA1 /* PermissiveOperations.m */; };
+		C25DFA72184A213300B7BFA1 /* PermissiveResearchDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = C25DFA6C184A213300B7BFA1 /* PermissiveResearchDatabase.m */; };
+		C25DFA73184A213300B7BFA1 /* PermissiveScoringMatrix.m in Sources */ = {isa = PBXBuildFile; fileRef = C25DFA6E184A213300B7BFA1 /* PermissiveScoringMatrix.m */; };
+		C25DFA79184A213F00B7BFA1 /* JMOTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C25DFA74184A213F00B7BFA1 /* JMOTableViewCell.m */; };
+		C25DFA7A184A213F00B7BFA1 /* UIView+WaitingView.m in Sources */ = {isa = PBXBuildFile; fileRef = C25DFA77184A213F00B7BFA1 /* UIView+WaitingView.m */; };
+		C25DFA7B184A213F00B7BFA1 /* JMOTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C25DFA78184A213F00B7BFA1 /* JMOTableViewCell.xib */; };
+		C25DFA7E184A218300B7BFA1 /* data50000.json in Resources */ = {isa = PBXBuildFile; fileRef = C25DFA7C184A218300B7BFA1 /* data50000.json */; };
+		C25DFA7F184A218300B7BFA1 /* data5000.json in Resources */ = {isa = PBXBuildFile; fileRef = C25DFA7D184A218300B7BFA1 /* data5000.json */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C25DFA50184A205A00B7BFA1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C25DFA22184A205A00B7BFA1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C25DFA29184A205A00B7BFA1;
+			remoteInfo = PermissiveResearch;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		C25DFA2A184A205A00B7BFA1 /* PermissiveResearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PermissiveResearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C25DFA2D184A205A00B7BFA1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		C25DFA2F184A205A00B7BFA1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		C25DFA31184A205A00B7BFA1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		C25DFA35184A205A00B7BFA1 /* PermissiveResearch-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PermissiveResearch-Info.plist"; sourceTree = "<group>"; };
+		C25DFA39184A205A00B7BFA1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		C25DFA3B184A205A00B7BFA1 /* PermissiveResearch-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PermissiveResearch-Prefix.pch"; sourceTree = "<group>"; };
+		C25DFA3C184A205A00B7BFA1 /* JMOAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JMOAppDelegate.h; sourceTree = "<group>"; };
+		C25DFA3D184A205A00B7BFA1 /* JMOAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JMOAppDelegate.m; sourceTree = "<group>"; };
+		C25DFA42184A205A00B7BFA1 /* JMOViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JMOViewController.h; sourceTree = "<group>"; };
+		C25DFA43184A205A00B7BFA1 /* JMOViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JMOViewController.m; sourceTree = "<group>"; };
+		C25DFA45184A205A00B7BFA1 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		C25DFA4B184A205A00B7BFA1 /* PermissiveResearchTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PermissiveResearchTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C25DFA4C184A205A00B7BFA1 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		C25DFA54184A205A00B7BFA1 /* PermissiveResearchTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PermissiveResearchTests-Info.plist"; sourceTree = "<group>"; };
+		C25DFA56184A205A00B7BFA1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		C25DFA58184A205A00B7BFA1 /* PermissiveResearchTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PermissiveResearchTests.m; sourceTree = "<group>"; };
+		C25DFA62184A20EA00B7BFA1 /* JMOViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JMOViewController.xib; sourceTree = "<group>"; };
+		C25DFA65184A213200B7BFA1 /* PermissiveAlignementMethods.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = PermissiveAlignementMethods.c; sourceTree = "<group>"; };
+		C25DFA66184A213300B7BFA1 /* PermissiveAlignementMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PermissiveAlignementMethods.h; sourceTree = "<group>"; };
+		C25DFA67184A213300B7BFA1 /* PermissiveObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PermissiveObject.h; sourceTree = "<group>"; };
+		C25DFA68184A213300B7BFA1 /* PermissiveObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PermissiveObject.m; sourceTree = "<group>"; };
+		C25DFA69184A213300B7BFA1 /* PermissiveOperations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PermissiveOperations.h; sourceTree = "<group>"; };
+		C25DFA6A184A213300B7BFA1 /* PermissiveOperations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PermissiveOperations.m; sourceTree = "<group>"; };
+		C25DFA6B184A213300B7BFA1 /* PermissiveResearchDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PermissiveResearchDatabase.h; sourceTree = "<group>"; };
+		C25DFA6C184A213300B7BFA1 /* PermissiveResearchDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PermissiveResearchDatabase.m; sourceTree = "<group>"; };
+		C25DFA6D184A213300B7BFA1 /* PermissiveScoringMatrix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PermissiveScoringMatrix.h; sourceTree = "<group>"; };
+		C25DFA6E184A213300B7BFA1 /* PermissiveScoringMatrix.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PermissiveScoringMatrix.m; sourceTree = "<group>"; };
+		C25DFA74184A213F00B7BFA1 /* JMOTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMOTableViewCell.m; sourceTree = "<group>"; };
+		C25DFA75184A213F00B7BFA1 /* JMOTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMOTableViewCell.h; sourceTree = "<group>"; };
+		C25DFA76184A213F00B7BFA1 /* UIView+WaitingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+WaitingView.h"; sourceTree = "<group>"; };
+		C25DFA77184A213F00B7BFA1 /* UIView+WaitingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WaitingView.m"; sourceTree = "<group>"; };
+		C25DFA78184A213F00B7BFA1 /* JMOTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JMOTableViewCell.xib; sourceTree = "<group>"; };
+		C25DFA7C184A218300B7BFA1 /* data50000.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = data50000.json; sourceTree = "<group>"; };
+		C25DFA7D184A218300B7BFA1 /* data5000.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = data5000.json; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C25DFA27184A205A00B7BFA1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C25DFA30184A205A00B7BFA1 /* CoreGraphics.framework in Frameworks */,
+				C25DFA32184A205A00B7BFA1 /* UIKit.framework in Frameworks */,
+				C25DFA2E184A205A00B7BFA1 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C25DFA48184A205A00B7BFA1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C25DFA4D184A205A00B7BFA1 /* XCTest.framework in Frameworks */,
+				C25DFA4F184A205A00B7BFA1 /* UIKit.framework in Frameworks */,
+				C25DFA4E184A205A00B7BFA1 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C25DFA21184A205A00B7BFA1 = {
+			isa = PBXGroup;
+			children = (
+				C25DFA33184A205A00B7BFA1 /* PermissiveResearch */,
+				C25DFA52184A205A00B7BFA1 /* PermissiveResearchTests */,
+				C25DFA2C184A205A00B7BFA1 /* Frameworks */,
+				C25DFA2B184A205A00B7BFA1 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C25DFA2B184A205A00B7BFA1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C25DFA2A184A205A00B7BFA1 /* PermissiveResearch.app */,
+				C25DFA4B184A205A00B7BFA1 /* PermissiveResearchTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C25DFA2C184A205A00B7BFA1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C25DFA64184A213200B7BFA1 /* PermissiveResearch */,
+				C25DFA2D184A205A00B7BFA1 /* Foundation.framework */,
+				C25DFA2F184A205A00B7BFA1 /* CoreGraphics.framework */,
+				C25DFA31184A205A00B7BFA1 /* UIKit.framework */,
+				C25DFA4C184A205A00B7BFA1 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C25DFA33184A205A00B7BFA1 /* PermissiveResearch */ = {
+			isa = PBXGroup;
+			children = (
+				C25DFA3C184A205A00B7BFA1 /* JMOAppDelegate.h */,
+				C25DFA3D184A205A00B7BFA1 /* JMOAppDelegate.m */,
+				C25DFA42184A205A00B7BFA1 /* JMOViewController.h */,
+				C25DFA43184A205A00B7BFA1 /* JMOViewController.m */,
+				C25DFA62184A20EA00B7BFA1 /* JMOViewController.xib */,
+				C25DFA75184A213F00B7BFA1 /* JMOTableViewCell.h */,
+				C25DFA74184A213F00B7BFA1 /* JMOTableViewCell.m */,
+				C25DFA78184A213F00B7BFA1 /* JMOTableViewCell.xib */,
+				C25DFA76184A213F00B7BFA1 /* UIView+WaitingView.h */,
+				C25DFA77184A213F00B7BFA1 /* UIView+WaitingView.m */,
+				C25DFA45184A205A00B7BFA1 /* Images.xcassets */,
+				C25DFA34184A205A00B7BFA1 /* Supporting Files */,
+			);
+			path = PermissiveResearch;
+			sourceTree = "<group>";
+		};
+		C25DFA34184A205A00B7BFA1 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C25DFA35184A205A00B7BFA1 /* PermissiveResearch-Info.plist */,
+				C25DFA7C184A218300B7BFA1 /* data50000.json */,
+				C25DFA7D184A218300B7BFA1 /* data5000.json */,
+				C25DFA39184A205A00B7BFA1 /* main.m */,
+				C25DFA3B184A205A00B7BFA1 /* PermissiveResearch-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C25DFA52184A205A00B7BFA1 /* PermissiveResearchTests */ = {
+			isa = PBXGroup;
+			children = (
+				C25DFA58184A205A00B7BFA1 /* PermissiveResearchTests.m */,
+				C25DFA53184A205A00B7BFA1 /* Supporting Files */,
+			);
+			path = PermissiveResearchTests;
+			sourceTree = "<group>";
+		};
+		C25DFA53184A205A00B7BFA1 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C25DFA54184A205A00B7BFA1 /* PermissiveResearchTests-Info.plist */,
+				C25DFA55184A205A00B7BFA1 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C25DFA64184A213200B7BFA1 /* PermissiveResearch */ = {
+			isa = PBXGroup;
+			children = (
+				C25DFA65184A213200B7BFA1 /* PermissiveAlignementMethods.c */,
+				C25DFA66184A213300B7BFA1 /* PermissiveAlignementMethods.h */,
+				C25DFA67184A213300B7BFA1 /* PermissiveObject.h */,
+				C25DFA68184A213300B7BFA1 /* PermissiveObject.m */,
+				C25DFA69184A213300B7BFA1 /* PermissiveOperations.h */,
+				C25DFA6A184A213300B7BFA1 /* PermissiveOperations.m */,
+				C25DFA6B184A213300B7BFA1 /* PermissiveResearchDatabase.h */,
+				C25DFA6C184A213300B7BFA1 /* PermissiveResearchDatabase.m */,
+				C25DFA6D184A213300B7BFA1 /* PermissiveScoringMatrix.h */,
+				C25DFA6E184A213300B7BFA1 /* PermissiveScoringMatrix.m */,
+			);
+			name = PermissiveResearch;
+			path = PermissiveResearch/PermissiveResearch;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C25DFA29184A205A00B7BFA1 /* PermissiveResearch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C25DFA5C184A205A00B7BFA1 /* Build configuration list for PBXNativeTarget "PermissiveResearch" */;
+			buildPhases = (
+				C25DFA26184A205A00B7BFA1 /* Sources */,
+				C25DFA27184A205A00B7BFA1 /* Frameworks */,
+				C25DFA28184A205A00B7BFA1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PermissiveResearch;
+			productName = PermissiveResearch;
+			productReference = C25DFA2A184A205A00B7BFA1 /* PermissiveResearch.app */;
+			productType = "com.apple.product-type.application";
+		};
+		C25DFA4A184A205A00B7BFA1 /* PermissiveResearchTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C25DFA5F184A205A00B7BFA1 /* Build configuration list for PBXNativeTarget "PermissiveResearchTests" */;
+			buildPhases = (
+				C25DFA47184A205A00B7BFA1 /* Sources */,
+				C25DFA48184A205A00B7BFA1 /* Frameworks */,
+				C25DFA49184A205A00B7BFA1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C25DFA51184A205A00B7BFA1 /* PBXTargetDependency */,
+			);
+			name = PermissiveResearchTests;
+			productName = PermissiveResearchTests;
+			productReference = C25DFA4B184A205A00B7BFA1 /* PermissiveResearchTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C25DFA22184A205A00B7BFA1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = JMO;
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = "Jerome Morissard";
+				TargetAttributes = {
+					C25DFA4A184A205A00B7BFA1 = {
+						TestTargetID = C25DFA29184A205A00B7BFA1;
+					};
+				};
+			};
+			buildConfigurationList = C25DFA25184A205A00B7BFA1 /* Build configuration list for PBXProject "PermissiveResearch" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C25DFA21184A205A00B7BFA1;
+			productRefGroup = C25DFA2B184A205A00B7BFA1 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C25DFA29184A205A00B7BFA1 /* PermissiveResearch */,
+				C25DFA4A184A205A00B7BFA1 /* PermissiveResearchTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C25DFA28184A205A00B7BFA1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C25DFA63184A20EA00B7BFA1 /* JMOViewController.xib in Resources */,
+				C25DFA7F184A218300B7BFA1 /* data5000.json in Resources */,
+				C25DFA7E184A218300B7BFA1 /* data50000.json in Resources */,
+				C25DFA7B184A213F00B7BFA1 /* JMOTableViewCell.xib in Resources */,
+				C25DFA46184A205A00B7BFA1 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C25DFA49184A205A00B7BFA1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C25DFA57184A205A00B7BFA1 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C25DFA26184A205A00B7BFA1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C25DFA71184A213300B7BFA1 /* PermissiveOperations.m in Sources */,
+				C25DFA70184A213300B7BFA1 /* PermissiveObject.m in Sources */,
+				C25DFA79184A213F00B7BFA1 /* JMOTableViewCell.m in Sources */,
+				C25DFA3A184A205A00B7BFA1 /* main.m in Sources */,
+				C25DFA6F184A213300B7BFA1 /* PermissiveAlignementMethods.c in Sources */,
+				C25DFA7A184A213F00B7BFA1 /* UIView+WaitingView.m in Sources */,
+				C25DFA72184A213300B7BFA1 /* PermissiveResearchDatabase.m in Sources */,
+				C25DFA73184A213300B7BFA1 /* PermissiveScoringMatrix.m in Sources */,
+				C25DFA44184A205A00B7BFA1 /* JMOViewController.m in Sources */,
+				C25DFA3E184A205A00B7BFA1 /* JMOAppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C25DFA47184A205A00B7BFA1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C25DFA59184A205A00B7BFA1 /* PermissiveResearchTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C25DFA51184A205A00B7BFA1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C25DFA29184A205A00B7BFA1 /* PermissiveResearch */;
+			targetProxy = C25DFA50184A205A00B7BFA1 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		C25DFA55184A205A00B7BFA1 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C25DFA56184A205A00B7BFA1 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C25DFA5A184A205A00B7BFA1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		C25DFA5B184A205A00B7BFA1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C25DFA5D184A205A00B7BFA1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PermissiveResearch/PermissiveResearch-Prefix.pch";
+				INFOPLIST_FILE = "PermissiveResearch/PermissiveResearch-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		C25DFA5E184A205A00B7BFA1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PermissiveResearch/PermissiveResearch-Prefix.pch";
+				INFOPLIST_FILE = "PermissiveResearch/PermissiveResearch-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		C25DFA60184A205A00B7BFA1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/PermissiveResearch.app/PermissiveResearch";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PermissiveResearch/PermissiveResearch-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "PermissiveResearchTests/PermissiveResearchTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		C25DFA61184A205A00B7BFA1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/PermissiveResearch.app/PermissiveResearch";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PermissiveResearch/PermissiveResearch-Prefix.pch";
+				INFOPLIST_FILE = "PermissiveResearchTests/PermissiveResearchTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C25DFA25184A205A00B7BFA1 /* Build configuration list for PBXProject "PermissiveResearch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C25DFA5A184A205A00B7BFA1 /* Debug */,
+				C25DFA5B184A205A00B7BFA1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C25DFA5C184A205A00B7BFA1 /* Build configuration list for PBXNativeTarget "PermissiveResearch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C25DFA5D184A205A00B7BFA1 /* Debug */,
+				C25DFA5E184A205A00B7BFA1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		C25DFA5F184A205A00B7BFA1 /* Build configuration list for PBXNativeTarget "PermissiveResearchTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C25DFA60184A205A00B7BFA1 /* Debug */,
+				C25DFA61184A205A00B7BFA1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C25DFA22184A205A00B7BFA1 /* Project object */;
+}
