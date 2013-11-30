@@ -97,7 +97,7 @@
 
 #pragma mark ScoringDatabaseDatasource
 
--(void)reloadData
+-(void)rebuildDatabase
 {
     NSString *jsonPath = [[NSBundle mainBundle] pathForResource:@"data5000"
                                                          ofType:@"json"];
