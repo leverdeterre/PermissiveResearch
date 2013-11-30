@@ -12,9 +12,10 @@ Advantages :
 
 
 ### Algorithm
-It's a custom implementation of the Smith-Waterman algorithm.
+It's a custom implementation of the [Smith-Waterman algorithm][1].
 The purpose of the algorithm is to obtain the optimum local alignment.
 A similarity matrix is use to tolerate errors.
+[1]: http://en.wikipedia.org/wiki/Smith–Waterman_algorithm
 
 
 ### Shared instance
@@ -27,7 +28,7 @@ A similarity matrix is use to tolerate errors.
 -(void)rebuildDatabase
 ```
 
-Exemple :
+Example :
 
 ```objective-c
 ///PermissiveResearchDatabase datasource
