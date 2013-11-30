@@ -70,7 +70,7 @@
     [[ScoringOperationQueue mainQueue] cancelAllOperations];
 
     
-    HeuristicScoringOperation *ope = [[HeuristicScoringOperation alloc] init];
+    ExactScoringOperation *ope = [[ExactScoringOperation alloc] init];
     ope.searchedString = final;
     
     SearchCompletionBlock block = ^(NSArray *results) {

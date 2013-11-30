@@ -4,12 +4,7 @@ PermissiveResearch
 An iOS search engine that allows errors in the searched element.
 Many developpers would have executed a fectch request on a CoreData database or a predicate to filter on a NSArray.
 
-PermissiveResearch is a alternative to simplify the search step.
-Advantages : 
-- No more CoreData problems (context/thread),
-- Search algorithm are easy customizable,
-- 3 algorithms already implemented.
-
+![Image](demo.png)
 
 ### Algorithm
 It's a custom implementation of the [Smith-Waterman algorithm][1].
@@ -17,6 +12,12 @@ The purpose of the algorithm is to obtain the optimum local alignment.
 A similarity matrix is use to tolerate errors.
 [1]: http://en.wikipedia.org/wiki/Smith–Waterman_algorithm
 
+
+PermissiveResearch is a alternative to simplify the search step.
+Advantages : 
+- No more CoreData problems (context/thread),
+- Search algorithm are easy customizable,
+- 3 algorithms already implemented.
 
 ### Shared instance
 ```objective-c
