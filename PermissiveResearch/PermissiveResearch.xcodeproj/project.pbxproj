@@ -30,6 +30,7 @@
 		C25DFA7B184A213F00B7BFA1 /* JMOTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C25DFA78184A213F00B7BFA1 /* JMOTableViewCell.xib */; };
 		C25DFA7E184A218300B7BFA1 /* data50000.json in Resources */ = {isa = PBXBuildFile; fileRef = C25DFA7C184A218300B7BFA1 /* data50000.json */; };
 		C25DFA7F184A218300B7BFA1 /* data5000.json in Resources */ = {isa = PBXBuildFile; fileRef = C25DFA7D184A218300B7BFA1 /* data5000.json */; };
+		C25DFA81184A232500B7BFA1 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C25DFA80184A232500B7BFA1 /* CoreData.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +79,7 @@
 		C25DFA78184A213F00B7BFA1 /* JMOTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JMOTableViewCell.xib; sourceTree = "<group>"; };
 		C25DFA7C184A218300B7BFA1 /* data50000.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = data50000.json; sourceTree = "<group>"; };
 		C25DFA7D184A218300B7BFA1 /* data5000.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = data5000.json; sourceTree = "<group>"; };
+		C25DFA80184A232500B7BFA1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +87,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C25DFA81184A232500B7BFA1 /* CoreData.framework in Frameworks */,
 				C25DFA30184A205A00B7BFA1 /* CoreGraphics.framework in Frameworks */,
 				C25DFA32184A205A00B7BFA1 /* UIKit.framework in Frameworks */,
 				C25DFA2E184A205A00B7BFA1 /* Foundation.framework in Frameworks */,
@@ -126,6 +129,7 @@
 		C25DFA2C184A205A00B7BFA1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C25DFA80184A232500B7BFA1 /* CoreData.framework */,
 				C25DFA64184A213200B7BFA1 /* PermissiveResearch */,
 				C25DFA2D184A205A00B7BFA1 /* Foundation.framework */,
 				C25DFA2F184A205A00B7BFA1 /* CoreGraphics.framework */,
