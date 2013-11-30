@@ -13,6 +13,6 @@ Pod::Spec.new do |s|
         :git => 'https://github.com/leverdeterre/PermissiveResearch.git',
         :tag => "0.0.3"
         }
-        s.source_files = 'PermissiveResearch/PermissiveResearch/*'
+        s.source_files = 'PermissiveResearch/PermissiveResearch/PermissiveResearch/*'
         s.frameworks    = 'CoreData'
 end
