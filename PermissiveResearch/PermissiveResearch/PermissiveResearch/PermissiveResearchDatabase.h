@@ -12,7 +12,7 @@
 
 @protocol PermissiveResearchDatasource <NSObject>
 @required
--(void)reloadData;
+-(void)rebuildDatabase;
 @end
 
 @interface PermissiveResearchDatabase : NSObject
