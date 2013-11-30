@@ -1,7 +1,7 @@
 PermissiveResearch
 ==================
 
-An iOS search engine that allows errors in the searched element.
+An iOS search engine that allows mistakes in the searched element.
 Many developpers would have executed a fectch request on a CoreData database or a predicate to filter on a NSArray.
 
 ![Image](demo.png)
