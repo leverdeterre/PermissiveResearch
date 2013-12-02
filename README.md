@@ -10,7 +10,7 @@ PermissiveResearch is a alternative to simplify the search step.
 Advantages : 
 - No more problems with CoreData (context/thread),
 - Performances,
-- 100% resusable for each projects that need to perform analysis in hudge data,
+- 100% resusable for each projects that need to perform analysis in huge data,
 - Search algorithm are easy customizable,
 - 3 algorithms already implemented, 
 
