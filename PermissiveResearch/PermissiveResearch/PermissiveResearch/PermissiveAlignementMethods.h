@@ -6,8 +6,9 @@
 //  Copyright (c) 2013 Jerome Morissard. All rights reserved.
 //
 
-#ifndef FastScoring_AlignementMethods_h
-#define FastScoring_AlignementMethods_h
+#ifndef AlignementMethods_h
+#define AlignementMethods_h
+
 
 int score2Strings(const char *seq1, const char *seq2, int lenSeq1, int lenSeq2, int** scoring, int logEnable);
 

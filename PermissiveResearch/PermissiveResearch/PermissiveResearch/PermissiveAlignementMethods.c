@@ -18,13 +18,20 @@
 
 #define SPACE_PENALITY -2
 
+typedef enum {
+    KeyboardTypeQwerty = 0,
+    KeyboardTypeAzerty = 1
+} KeyboardType;
+
 int score2Letters (char a, char b);
 int lettersIn(char a, char *all);
 int** allocate2D(int rows,int cols);
 void logMatrix(const char *seq1, const char *seq2, int lenSeq1, int lenSeq2, int** scoring);
 
 
-
+int lettersAreProximalOnKeyboard(char a,char b, KeyboardType keyboard);
+int lettersAreProximalOnQwertyKeyboard(char a,char b);
+int lettersAreProximalOnAzertyKeyboard(char a,char b);
 
 int score2Strings(const char *seq1, const char *seq2, int lenSeq1, int lenSeq2, int** scoring, int logEnable) {
     int i,j;
@@ -137,6 +144,48 @@ int lettersIn(char a, char *all) {
             return 1;
         }
     }
+    
+    return 0;
+}
+
+#warning TODO implement keyboard analysis
+int lettersAreProximalOnKeyboard(char a,char b, KeyboardType keyboard) {
+    switch (keyboard) {
+        case KeyboardTypeQwerty:
+            return lettersAreProximalOnQwertyKeyboard(a,b);
+            break;
+            
+        case KeyboardTypeAzerty:
+            return lettersAreProximalOnAzertyKeyboard(a,b);
+            break;
+            
+        default:
+            break;
+    }
+    return 0;
+}
+
+int lettersAreProximalOnQwertyKeyboard(char a,char b) {
+    if (b == 'q') {
+        if (lettersIn(a,"wa")){
+            return 1;
+        }
+    }
+    else if (b == 'w') {
+        if (lettersIn(a,"qase")){
+            return 1;
+        }
+    }
+    else if (b == 'e') {
+        if (lettersIn(a,"wsdr")){
+            return 1;
+        }
+    }
+    
+    return 0;
+}
+
+int lettersAreProximalOnAzertyKeyboard(char a,char b) {
     
     return 0;
 }

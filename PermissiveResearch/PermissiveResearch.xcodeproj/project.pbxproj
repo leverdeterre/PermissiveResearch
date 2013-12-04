@@ -191,8 +191,8 @@
 		C25DFA64184A213200B7BFA1 /* PermissiveResearch */ = {
 			isa = PBXGroup;
 			children = (
-				C25DFA65184A213200B7BFA1 /* PermissiveAlignementMethods.c */,
 				C25DFA66184A213300B7BFA1 /* PermissiveAlignementMethods.h */,
+				C25DFA65184A213200B7BFA1 /* PermissiveAlignementMethods.c */,
 				C25DFA67184A213300B7BFA1 /* PermissiveObject.h */,
 				C25DFA68184A213300B7BFA1 /* PermissiveObject.m */,
 				C25DFA69184A213300B7BFA1 /* PermissiveOperations.h */,
@@ -508,6 +508,7 @@
 				C25DFA5E184A205A00B7BFA1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C25DFA5F184A205A00B7BFA1 /* Build configuration list for PBXNativeTarget "PermissiveResearchTests" */ = {
 			isa = XCConfigurationList;
@@ -516,6 +517,7 @@
 				C25DFA61184A205A00B7BFA1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
