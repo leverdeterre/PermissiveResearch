@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "PermissiveOperations.h"
 
 #define ScoringSegmentLenght 3
 
@@ -15,15 +16,23 @@
 -(void)rebuildDatabase;
 @end
 
+@protocol PermissiveResearchDelegate <NSObject>
+@required
+-(void)searchCompletedWithResults:(NSArray *)results;
+@end
+
 @interface PermissiveResearchDatabase : NSObject
 
 @property (strong, atomic) NSMutableSet *elements;
 @property (weak, nonatomic) id <PermissiveResearchDatasource> datasource;
+@property (weak, nonatomic) id <PermissiveResearchDelegate> delegate;
 
 + (PermissiveResearchDatabase *)sharedDatabase;
 
 - (void)addRetainedObjet:(id)obj forKey:(NSString *)key;
 - (void)addManagedObjet:(id)obj forKey:(NSString *)key;
 - (NSMutableSet *)objectsForSegment:(NSString *)key;
+
+- (void)searchString:(NSString *)searchedString withOperation:(ScoringOperationType)operationType;
 
 @end

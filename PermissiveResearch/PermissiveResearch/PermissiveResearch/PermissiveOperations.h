@@ -17,6 +17,12 @@
 
 typedef void (^SearchCompletionBlock)(NSArray *findedElements);
 
+typedef enum {
+    ScoringOperationTypeExact,
+    ScoringOperationTypeHeuristic,
+    ScoringOperationTypeHeurexact
+} ScoringOperationType;
+
 ///Align using scoring
 @interface ScoringOperationQueue : NSOperationQueue
 

@@ -122,5 +122,30 @@
     return [self.segments objectForKey:[key lowercaseString]];
 }
 
+- (void)searchString:(NSString *)searchedString withOperation:(ScoringOperationType)operationType
+{
+    [[ScoringOperationQueue mainQueue] cancelAllOperations];
+
+    ExactScoringOperation *operation;
+    if (operationType == ScoringOperationTypeExact) {
+        operation = [ExactScoringOperation new];
+    }
+    else if (operationType == ScoringOperationTypeHeuristic) {
+        operation = [HeuristicScoringOperation new];
+    }
+    else if (operationType == ScoringOperationTypeHeurexact) {
+        operation = [HeurexactScoringOperation new];
+    }
+    
+    operation.searchedString = searchedString;
+    SearchCompletionBlock block = ^(NSArray *results) {
+        if ([self.delegate respondsToSelector:@selector(searchCompletedWithResults:)]) {
+            [self.delegate searchCompletedWithResults:results];
+        }
+    };
+    
+    [operation setCustomCompletionBlock:block];
+    [[ScoringOperationQueue mainQueue] addOperation:operation];
+}
 
 @end

@@ -16,7 +16,7 @@
 #import "JMOTableViewCell.h"
 #import "UIView+WaitingView.h"
 
-@interface JMOViewController () <UITableViewDataSource,UITextFieldDelegate, PermissiveResearchDatasource>
+@interface JMOViewController () <UITableViewDataSource,UITextFieldDelegate, PermissiveResearchDatasource, PermissiveResearchDelegate>
 @property (strong, nonatomic) NSMutableArray *allElements;
 @property (strong, nonatomic) NSArray *findedElements;
 @property (strong, nonatomic) NSArray *searchedList;
@@ -38,6 +38,7 @@
     self.textField.delegate = self;
     
     [[PermissiveResearchDatabase sharedDatabase] setDatasource:self];
+    [[PermissiveResearchDatabase sharedDatabase] setDelegate:self];
 }
 
 
@@ -64,27 +65,7 @@
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
     NSString *final = [textField.text stringByReplacingCharactersInRange:range withString:string];
-    
-    NSLog(@"Start search by matrix");
-    [self.tableView addWaitingView];
-    [[ScoringOperationQueue mainQueue] cancelAllOperations];
-
-    
-    ExactScoringOperation *ope = [[ExactScoringOperation alloc] init];
-    ope.searchedString = final;
-    
-    SearchCompletionBlock block = ^(NSArray *results) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            self.findedElements = results;
-            [self.tableView reloadData];
-            [self.tableView removeWaitingView];
-            NSLog(@"End search by matrix");
-        });
-    };
-    
-    [ope setCustomCompletionBlock:block];
-    [[ScoringOperationQueue mainQueue] addOperation:ope];
-    
+    [self searchString:final];
     return YES;
 }
 
@@ -94,6 +75,12 @@
     return YES;
 }
 
+-(void)searchString:(NSString *)searchedString
+{
+    NSLog(@"Start search by matrix");
+    [self.tableView addWaitingView];
+    [[PermissiveResearchDatabase sharedDatabase] searchString:searchedString withOperation:ScoringOperationTypeExact];
+}
 
 #pragma mark ScoringDatabaseDatasource
 
@@ -115,44 +102,16 @@
     self.searchedList = list;
 }
 
-- (NSArray *)filteredArray:(NSArray *)list withFilter:(NSString *)filter
+#pragma mark PermissiveResearchDelegate
+
+-(void)searchCompletedWithResults:(NSArray *)results
 {
-    
-    if ([filter length] == 0) {
-        return list;
-    }
-    
-    NSArray *result = nil;
-	   
-    NSString *filteredString = [filter stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-    filteredString = [filteredString stringByReplacingOccurrencesOfString:@" " withString:@"( |\\-|')"];
-    
-    filteredString = [filteredString lowercaseString];
-    
-    NSString *regex = nil;
-    if ([filteredString rangeOfString:@"ste"].location != NSNotFound) {
-        NSString *filteredStringWithSt = [filteredString stringByReplacingOccurrencesOfString:@"ste" withString:@"sainte"];
-        regex = [NSString stringWithFormat:@"self matches[cd] \".*%@.*|.*%@.*\"",
-                 filteredString, filteredStringWithSt];
-    } else if ([filteredString rangeOfString:@"st"].location != NSNotFound) {
-        NSString *filteredStringWithSt = [filteredString stringByReplacingOccurrencesOfString:@"st" withString:@"saint"];
-        regex = [NSString stringWithFormat:@"self matches[cd] \".*%@.*|.*%@.*\"",
-                 filteredString, filteredStringWithSt];
-    } else {
-        regex = [NSString stringWithFormat:@"self matches[cd] \".*%@.*\"", filteredString];
-    }
-    
-    NSPredicate *aPredicate = [NSPredicate predicateWithFormat:regex];
-    
-    //    BKLog(@"** regex: %@", regex);
-    NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary *bindings) {
-        return [aPredicate evaluateWithObject:[evaluatedObject name]];
-    }];
-    result = [list filteredArrayUsingPredicate:predicate];
-    
-    //	BKLog(@"Filtering %i stations with filter: %@ -- Results: %i", [list count], filter, [result count]);
-	return result;
-    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.tableView removeWaitingView];
+        self.findedElements = results;
+        [self.tableView reloadData];
+        NSLog(@"End search by matrix");
+    });
 }
 
 @end
