@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
         s.name         = 'PermissiveResearch'
-        s.version = '0.0.1'
+        s.version = '0.0.2'
         s.requires_arc = true
         s.author = {
                 'Morissard Jérome' => 'morissardj@gmail.com'
@@ -11,7 +11,7 @@ Pod::Spec.new do |s|
         s.homepage = 'https://github.com/leverdeterre/PermissiveResearchr'
         s.source = {
         :git => 'https://github.com/leverdeterre/PermissiveResearch.git',
-        :tag => "0.0.3"
+        :tag => "0.0.2"
         }
         s.source_files = 'PermissiveResearch/PermissiveResearch/PermissiveResearch/*'
         s.frameworks    = 'CoreData'
