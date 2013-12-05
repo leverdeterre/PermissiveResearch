@@ -54,6 +54,22 @@ Example :
 }
 ```
 
+### Easy search operation using PermissiveResearch delegate
+```objective-
+
+[[PermissiveResearchDatabase sharedDatabase] setDelegate:self];
+[[PermissiveResearchDatabase sharedDatabase] searchString:searchedString withOperation:ScoringOperationTypeExact];
+    
+#pragma mark PermissiveResearchDelegate
+
+-(void)searchCompletedWithResults:(NSArray *)results
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.findedElements = results;
+        [self.tableView reloadData];
+    });
+}
+```
 
 ### Create your first search operation
 ```objective-
