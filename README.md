@@ -54,6 +54,41 @@ Example :
 }
 ```
 
+### Datasource method to customize scoring methods
+```objective-c
+-(NSInteger)customCostForEvent:(ScoringEvent)event
+```
+
+Example (default values) : 
+```objective-c
+-(NSInteger)customCostForEvent:(ScoringEvent)event
+{
+    switch (event) {
+        case ScoringEventPerfectMatch:
+            return 2;
+            break;
+           
+        case ScoringEventNotPerfectMatchKeyboardAnalyseHelp:
+            return 1;
+            break;
+            
+        case ScoringEventNotPerfectBecauseOfAccents:
+            return 2;
+            break;
+            
+        case ScoringEventLetterAddition:
+            return -1;
+            break;
+            
+        default:
+            break;
+    }
+    
+    return NSNotFound;
+}
+```
+
+
 ### Easy search operation using PermissiveResearch delegate
 ```objective-
 
