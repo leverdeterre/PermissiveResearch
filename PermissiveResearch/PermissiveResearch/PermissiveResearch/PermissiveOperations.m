@@ -43,7 +43,6 @@
     @autoreleasepool {
         
         NSUInteger taille = self.searchedString.length;
-        
         int max = (int)MAX([[[PermissiveResearchDatabase sharedDatabase].elements valueForKeyPath:@"@max.keyLenght"] intValue], [self.searchedString length]);
         int **alignementMatrix = allocate2D(max,max);
         
@@ -51,7 +50,7 @@
         [[PermissiveResearchDatabase sharedDatabase].elements enumerateObjectsUsingBlock:^(PermissiveObject *obj, BOOL *stop) {
             if (self.isCancelled)
                 return;
-            obj.score = score2Strings(self.searchedString.UTF8String, obj.key, taille, obj.keyLenght,alignementMatrix, 0);
+            obj.score = score2Strings(self.searchedString.UTF8String, obj.key, taille, obj.keyLenght,alignementMatrix, 0, [PermissiveScoringMatrix sharedScoringMatrix].structRepresentation);
             
         }];
         
@@ -66,7 +65,7 @@
         
         //LOG MAX
         PermissiveObject *obj = [findedElements objectAtIndex:0];
-        logCalculatedMatrix([self.searchedString UTF8String], obj.key, (int)taille, obj.keyLenght);
+        logCalculatedMatrix([self.searchedString UTF8String], obj.key, (int)taille, obj.keyLenght, [PermissiveScoringMatrix sharedScoringMatrix].structRepresentation);
         
         if(self.customCompletionBlock) {
             self.customCompletionBlock(findedElements);
@@ -127,7 +126,7 @@
         //LOG MAX
         NSUInteger taille = self.searchedString.length;
         PermissiveObject *obj = [findedElements objectAtIndex:0];
-        logCalculatedMatrix([self.searchedString UTF8String], obj.key, (int)taille, obj.keyLenght);
+        logCalculatedMatrix([self.searchedString UTF8String], obj.key, (int)taille, obj.keyLenght, [PermissiveScoringMatrix sharedScoringMatrix].structRepresentation);
         
         if(self.customCompletionBlock) {
             self.customCompletionBlock(findedElements);
@@ -194,7 +193,7 @@
                 *stop = YES;
             }
             
-            obj.score = score2Strings(self.searchedString.UTF8String, obj.key, taille, obj.keyLenght,alignementMatrix, 0);
+            obj.score = score2Strings(self.searchedString.UTF8String, obj.key, taille, obj.keyLenght,alignementMatrix, 0,[PermissiveScoringMatrix sharedScoringMatrix].structRepresentation);
             
         }];
         
@@ -202,7 +201,7 @@
         
         //LOG MAX
         PermissiveObject *obj = [findedElements objectAtIndex:0];
-        logCalculatedMatrix([self.searchedString UTF8String], obj.key, (int)taille, obj.keyLenght);
+        logCalculatedMatrix([self.searchedString UTF8String], obj.key, (int)taille, obj.keyLenght, [PermissiveScoringMatrix sharedScoringMatrix].structRepresentation);
         
         if(self.customCompletionBlock) {
             self.customCompletionBlock(findedElements);

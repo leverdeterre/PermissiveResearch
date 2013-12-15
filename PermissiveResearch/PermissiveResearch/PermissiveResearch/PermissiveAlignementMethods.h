@@ -9,10 +9,19 @@
 #ifndef AlignementMethods_h
 #define AlignementMethods_h
 
+struct PermissiveScoringMatrixStruct {
+    int scorePerfectMatch;
+    int scoreNotPerfectMatchKeyboardAnalyseHelp;
+    int scoreNotPerfectBecauseOfAccents;
+    int scoreLetterAddition;
+};
 
-int score2Strings(const char *seq1, const char *seq2, int lenSeq1, int lenSeq2, int** scoring, int logEnable);
+typedef struct PermissiveScoringMatrixStruct     PermissiveScoringMatrixStruct;
 
-void logCalculatedMatrix(const char *seq1, const char *seq2, int lenSeq1, int lenSeq2);
+
+int score2Strings(const char *seq1, const char *seq2, int lenSeq1, int lenSeq2, int** scoring, int logEnable, PermissiveScoringMatrixStruct scoringStructure);
+
+void logCalculatedMatrix(const char *seq1, const char *seq2, int lenSeq1, int lenSeq2, PermissiveScoringMatrixStruct scoringStructure);
 
 int** allocate2D(int rows,int cols);
 

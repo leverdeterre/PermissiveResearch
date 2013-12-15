@@ -7,103 +7,81 @@
 //
 
 #import "PermissiveScoringMatrix.h"
-#import "PermissiveAlignementMethods.h"
-
-void initWithDefaultValue(int** arr2D,int nbRows,int nbCols, int defaultValue);
 
 @interface PermissiveScoringMatrix ()
 @end
 
 @implementation PermissiveScoringMatrix
 
+static PermissiveScoringMatrix *scoringMatrix = nil;
+
 + (PermissiveScoringMatrix *)sharedScoringMatrix;
 {
-    static PermissiveScoringMatrix *scoringMatrix = nil;
-    if (scoringMatrix == nil)
-    {
-        scoringMatrix = [[PermissiveScoringMatrix alloc] init];
-        scoringMatrix.matrix = allocate2D(255, 255);
-        initWithDefaultValue(scoringMatrix.matrix , 255, 255, -1);
-    }
+    if (scoringMatrix == nil) {
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{
+			scoringMatrix = [[self alloc] init];
+        });
+	}
     
     return scoringMatrix;
 }
 
-@end
-
-void initWithDefaultValue(int** arr2D,int nbRows,int nbCols, int defaultValue) {
-    for(int i=0;i<nbRows;i++)
-    {
-        for(int j=0;j<nbCols;j++)
-        {
-            arr2D[i][j] = defaultValue;
-            if (i == j) {
-                arr2D[i][j] = 2;
-            }
-        }
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        [self loadDefaultValues];
+        [self loadStructure];
     }
     
-    //Accents lettre A
-    arr2D[65][97] = 1;
-    arr2D[65][131] = 1;
-    arr2D[65][132] = 1;
-    arr2D[65][133] = 1;
-    
-    arr2D[97][65] = 1;
-    arr2D[97][131] = 1;
-    arr2D[97][132] = 1;
-    arr2D[97][133] = 1;
-    
-    arr2D[131][65] = 1;
-    arr2D[131][97] = 1;
-    arr2D[131][132] = 1;
-    arr2D[131][133] = 1;
-    
-    arr2D[132][65] = 1;
-    arr2D[132][97] = 1;
-    arr2D[132][131] = 1;
-    arr2D[132][133] = 1;
-    
-    arr2D[133][65] = 1;
-    arr2D[133][97] = 1;
-    arr2D[133][131] = 1;
-    arr2D[133][132] = 1;
-    
-    
-    //Accents lettre E
-    arr2D[69][101] = 1;
-    arr2D[69][130] = 1;
-    arr2D[69][136] = 1;
-    arr2D[69][137] = 1;
-    arr2D[69][138] = 1;
-    
-    arr2D[101][69] = 1;
-    arr2D[101][130] = 1;
-    arr2D[101][136] = 1;
-    arr2D[101][137] = 1;
-    arr2D[101][138] = 1;
-    
-    arr2D[130][69] = 1;
-    arr2D[130][101] = 1;
-    arr2D[130][136] = 1;
-    arr2D[130][137] = 1;
-    arr2D[130][138] = 1;
-    
-    arr2D[136][69] = 1;
-    arr2D[136][101] = 1;
-    arr2D[136][130] = 1;
-    arr2D[136][137] = 1;
-    arr2D[136][138] = 1;
-    
-    arr2D[137][69] = 1;
-    arr2D[137][101] = 1;
-    arr2D[137][130] = 1;
-    arr2D[137][136] = 1;
-    arr2D[137][138] = 1;
-    
-    arr2D[138][69] = 1;
-    arr2D[138][101] = 1;
-    arr2D[138][130] = 1;
-    arr2D[138][136] = 1;
-    arr2D[138][137] = 1;
+    return self;
 }
+
+#pragma mark -
+
+- (void)loadDefaultValues
+{
+    _scorePerfectMatch = [self defaultValuesForEvent:ScoringEventPerfectMatch];
+    _scoreNotPerfectMatchKeyboardAnalyseHelp = [self defaultValuesForEvent:ScoringEventNotPerfectMatchKeyboardAnalyseHelp];
+    _scoreNotPerfectBecauseOfAccents = [self defaultValuesForEvent:ScoringEventNotPerfectBecauseOfAccents];
+    _scoreLetterAddition = [self defaultValuesForEvent:ScoringEventLetterAddition];
+}
+
+- (void)loadStructure
+{
+    struct PermissiveScoringMatrixStruct maStructure;
+    maStructure.scorePerfectMatch = (int)_scorePerfectMatch;
+    maStructure.scoreNotPerfectBecauseOfAccents = (int)_scoreNotPerfectBecauseOfAccents;
+    maStructure.scoreNotPerfectMatchKeyboardAnalyseHelp = (int)_scoreNotPerfectMatchKeyboardAnalyseHelp;
+    maStructure.scoreLetterAddition = (int)_scoreLetterAddition;
+    _structRepresentation = maStructure;
+}
+
+-(NSInteger)defaultValuesForEvent:(ScoringEvent)event
+{
+    switch (event) {
+        case ScoringEventPerfectMatch:
+            return 2;
+            break;
+            
+        case ScoringEventNotPerfectMatchKeyboardAnalyseHelp:
+            return 1;
+            break;
+            
+        case ScoringEventNotPerfectBecauseOfAccents:
+            return 2;
+            break;
+            
+        case ScoringEventLetterAddition:
+            return -2;
+            break;
+            
+        default:
+            break;
+    }
+    
+    return NSNotFound;
+}
+
+@end

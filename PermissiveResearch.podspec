@@ -8,7 +8,7 @@ Pod::Spec.new do |s|
         s.ios.deployment_target = '5.0'
         s.summary = 'Permissive Research is a iOS search engine that allows errors in the searched element. '
         s.license      = { :type => 'MIT' }
-        s.homepage = 'https://github.com/leverdeterre/PermissiveResearchr'
+        s.homepage = 'https://github.com/leverdeterre/PermissiveResearch'
         s.source = {
         :git => 'https://github.com/leverdeterre/PermissiveResearch.git',
         :tag => "0.0.3"

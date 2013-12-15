@@ -8,6 +8,7 @@
 
 #import "JMOViewController.h"
 
+#import "PermissiveScoringMatrix.h"
 #import "PermissiveObject.h"
 #import "PermissiveResearchDatabase.h"
 #import "PermissiveOperations.h"
@@ -39,6 +40,7 @@
     
     [[PermissiveResearchDatabase sharedDatabase] setDatasource:self];
     [[PermissiveResearchDatabase sharedDatabase] setDelegate:self];
+    
 }
 
 
@@ -100,6 +102,32 @@
     }
     
     self.searchedList = list;
+}
+
+-(NSInteger)customCostForEvent:(ScoringEvent)event
+{
+    switch (event) {
+        case ScoringEventPerfectMatch:
+            return 2;
+            break;
+           
+        case ScoringEventNotPerfectMatchKeyboardAnalyseHelp:
+            return 1;
+            break;
+            
+        case ScoringEventNotPerfectBecauseOfAccents:
+            return 2;
+            break;
+            
+        case ScoringEventLetterAddition:
+            return -1;
+            break;
+            
+        default:
+            break;
+    }
+    
+    return NSNotFound;
 }
 
 #pragma mark PermissiveResearchDelegate

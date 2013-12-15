@@ -7,13 +7,26 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "PermissiveAlignementMethods.h"
+
+typedef enum {
+    ScoringEventPerfectMatch = 0,
+    ScoringEventNotPerfectMatchKeyboardAnalyseHelp,
+    ScoringEventNotPerfectBecauseOfAccents,
+    ScoringEventLetterAddition
+} ScoringEvent;
 
 @interface PermissiveScoringMatrix : NSObject
 
-@property (assign, nonatomic) int** matrix;
+@property (assign, nonatomic) NSInteger scorePerfectMatch;
+@property (assign, nonatomic) NSInteger scoreNotPerfectMatchKeyboardAnalyseHelp;
+@property (assign, nonatomic) NSInteger scoreNotPerfectBecauseOfAccents;
+@property (assign, nonatomic) NSInteger scoreLetterAddition;
+@property (assign, nonatomic) PermissiveScoringMatrixStruct structRepresentation;
 
 + (PermissiveScoringMatrix *)sharedScoringMatrix;
-
-void initWithDefaultValue(int** arr2D,int nbRows,int nbCols, int defaultValue);
+- (void)loadDefaultValues;
+- (void)loadStructure;
+-(NSInteger)defaultValuesForEvent:(ScoringEvent)event;
 
 @end

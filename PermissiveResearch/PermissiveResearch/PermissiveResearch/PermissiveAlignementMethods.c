@@ -10,20 +10,19 @@
 #include <stdlib.h>
 #include <string.h> 
 #include <math.h>
+#include "PermissiveAlignementMethods.h"
 
 #define MAX2(x,y) ((x) >= (y) ? (x) : (y))
 #define MIN2(x,y) ((x) <= (y) ? (x) : (y))
 #define MAX3(x,y,z) ((x) >= (y) && (x) >= (z) ? (x) : MAX2(y,z))
 #define MIN3(x,y,z) ((x) <= (y) && (x) <= (z) ? (x) : MIN2(y,z))
 
-#define SPACE_PENALITY -2
-
 typedef enum {
     KeyboardTypeQwerty = 0,
     KeyboardTypeAzerty = 1
 } KeyboardType;
 
-int score2Letters (char a, char b);
+int score2Letters (char a, char b,PermissiveScoringMatrixStruct scoringStructure);
 int lettersIn(char a, char *all);
 int** allocate2D(int rows,int cols);
 void logMatrix(const char *seq1, const char *seq2, int lenSeq1, int lenSeq2, int** scoring);
@@ -33,7 +32,9 @@ int lettersAreProximalOnKeyboard(char a,char b, KeyboardType keyboard);
 int lettersAreProximalOnQwertyKeyboard(char a,char b);
 int lettersAreProximalOnAzertyKeyboard(char a,char b);
 
-int score2Strings(const char *seq1, const char *seq2, int lenSeq1, int lenSeq2, int** scoring, int logEnable) {
+int score2Strings(const char *seq1, const char *seq2, int lenSeq1, int lenSeq2, int** scoring, int logEnable, PermissiveScoringMatrixStruct scoringStructure)
+{
+
     int i,j;
     int maxScore = 0;
     
@@ -42,20 +43,20 @@ int score2Strings(const char *seq1, const char *seq2, int lenSeq1, int lenSeq2, 
         for(j = 0; j < lenSeq2; j++)
         {
             if(i == 0 && j ==0) {
-                scoring[i][j] = score2Letters(seq1[i], seq2[j]);
+                scoring[i][j] = score2Letters(seq1[i], seq2[j],scoringStructure);
             }
             else if(i == 0) {
-                scoring[i][j] = MAX2(scoring[i][j-1] + SPACE_PENALITY,
-                                     score2Letters(seq1[i], seq2[j]));
+                scoring[i][j] = MAX2(scoring[i][j-1] + scoringStructure.scoreLetterAddition,
+                                     score2Letters(seq1[i], seq2[j],scoringStructure));
             }
             else if(j == 0) {
-                scoring[i][j] = MAX2(scoring[i-1][j] + SPACE_PENALITY,
-                                     score2Letters(seq1[i], seq2[j]));
+                scoring[i][j] = MAX2(scoring[i-1][j] + scoringStructure.scoreLetterAddition,
+                                     score2Letters(seq1[i], seq2[j],scoringStructure));
             }
             else {
-                scoring[i][j] = MAX3(scoring[i-1][j] + SPACE_PENALITY,
-                                     scoring[i][j-1] + SPACE_PENALITY,
-                                     scoring[i-1][j-1] + score2Letters(seq1[i], seq2[j]));
+                scoring[i][j] = MAX3(scoring[i-1][j] + scoringStructure.scoreLetterAddition,
+                                     scoring[i][j-1] + scoringStructure.scoreLetterAddition,
+                                     scoring[i-1][j-1] + score2Letters(seq1[i], seq2[j],scoringStructure));
             }
             
             if (scoring[i][j] > maxScore) {
@@ -73,12 +74,12 @@ int score2Strings(const char *seq1, const char *seq2, int lenSeq1, int lenSeq2, 
     return maxScore;
 }
 
-void logCalculatedMatrix(const char *seq1, const char *seq2, int lenSeq1, int lenSeq2)
+void logCalculatedMatrix(const char *seq1, const char *seq2, int lenSeq1, int lenSeq2, PermissiveScoringMatrixStruct scoringStructure)
 {
     int max = MAX2(lenSeq1, lenSeq2);
     int **alignementMatrix = allocate2D(max,max);
     
-    score2Strings(seq1, seq2, lenSeq1, lenSeq2,alignementMatrix,1);
+    score2Strings(seq1, seq2, lenSeq1, lenSeq2,alignementMatrix,1, scoringStructure);
     return;
 }
 
@@ -117,24 +118,24 @@ int** allocate2D(int rows,int cols)
 }
 
 
-int score2Letters (char a, char b) {
+int score2Letters (char a, char b,PermissiveScoringMatrixStruct scoringStructure) {
     if (a == b) {
-        return 2;
+        return scoringStructure.scorePerfectMatch;
     }
     else if (abs(a - b) == 32) {
-        return 2;
+        return scoringStructure.scorePerfectMatch;
     }
     //Accent E
     if (lettersIn(a,"eéÈÉÊËèéêë") && lettersIn(b,"eéÈÉÊËèéêë")) {
-        return 1;
+        return scoringStructure.scoreNotPerfectBecauseOfAccents;
     }
     
     //Accent A
     if (lettersIn(a,"aàáâ")&& lettersIn(b,"aàáâ")) {
-        return 1;
+        return scoringStructure.scoreNotPerfectBecauseOfAccents;
     }
     
-    return -2;
+    return -scoringStructure.scorePerfectMatch;;
 }
 
 int lettersIn(char a, char *all) {

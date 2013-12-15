@@ -17,15 +17,16 @@
 
 @implementation PermissiveResearchDatabase
 
-+ (PermissiveResearchDatabase *)sharedDatabase
+static PermissiveResearchDatabase *mainDatabase = nil;
+
++ (instancetype)sharedDatabase
 {
-    static PermissiveResearchDatabase *mainDatabase = nil;
-    if (mainDatabase == nil)
-    {
-        mainDatabase = [[PermissiveResearchDatabase alloc] init];
-        mainDatabase.elements = [NSMutableSet new];
-        mainDatabase.segments = [NSMutableDictionary new];
-    }
+    if (mainDatabase == nil) {
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{
+			mainDatabase = [[self alloc] init];
+        });
+	}
     
     return mainDatabase;
 }
@@ -38,7 +39,8 @@
                                                  selector:@selector(didReceiveMemoryWarning)
                                                      name:UIApplicationDidReceiveMemoryWarningNotification
                                                    object:nil];
-        
+        _elements = [NSMutableSet new];
+        _segments = [NSMutableDictionary new];
         [_datasource rebuildDatabase];
     }
     
@@ -64,6 +66,56 @@
 {
     _datasource = datasource;
     [_datasource rebuildDatabase];
+    [self rebuildScoringMatrix];
+}
+
+- (void)rebuildScoringMatrix
+{
+    PermissiveScoringMatrix *scoringMatrix = [PermissiveScoringMatrix sharedScoringMatrix];
+    
+    if ([self.datasource respondsToSelector:@selector(customCostForEvent:)])
+    {
+        //ScoringEventPerfectMatch
+        NSInteger customValue = [self.datasource customCostForEvent:ScoringEventPerfectMatch];
+        if (customValue != NSNotFound) {
+            [scoringMatrix setScorePerfectMatch:customValue];
+        }
+        else {
+            [scoringMatrix setScorePerfectMatch:[scoringMatrix defaultValuesForEvent:ScoringEventPerfectMatch]];
+        }
+        
+        //ScoringEventNotPerfectMatchKeyboardAnalyseHelp
+        customValue = [self.datasource customCostForEvent:ScoringEventNotPerfectMatchKeyboardAnalyseHelp];
+        if (customValue != NSNotFound) {
+            [[PermissiveScoringMatrix sharedScoringMatrix] setScoreNotPerfectMatchKeyboardAnalyseHelp:customValue];
+        }
+        else {
+            [scoringMatrix setScorePerfectMatch:[scoringMatrix defaultValuesForEvent:ScoringEventNotPerfectMatchKeyboardAnalyseHelp]];
+        }
+        
+        //ScoringEventNotPerfectBecauseOfAccents
+        customValue = [self.datasource customCostForEvent:ScoringEventNotPerfectBecauseOfAccents];
+        if (customValue != NSNotFound) {
+            [[PermissiveScoringMatrix sharedScoringMatrix] setScoreNotPerfectBecauseOfAccents:customValue];
+        }
+        else {
+            [scoringMatrix setScorePerfectMatch:[scoringMatrix defaultValuesForEvent:ScoringEventNotPerfectBecauseOfAccents]];
+        }
+        
+        //ScoringEventLetterAddition
+        customValue = [self.datasource customCostForEvent:ScoringEventLetterAddition];
+        if (customValue != NSNotFound) {
+            [[PermissiveScoringMatrix sharedScoringMatrix] setScoreLetterAddition:customValue];
+        }
+        else {
+            [scoringMatrix setScorePerfectMatch:[scoringMatrix defaultValuesForEvent:ScoringEventLetterAddition]];
+        }
+    }
+    else {
+        [[PermissiveScoringMatrix sharedScoringMatrix]  loadDefaultValues];
+    }
+    
+    [scoringMatrix loadStructure];
 }
 
 #pragma mark -

@@ -7,13 +7,18 @@
 //
 
 #import <Foundation/Foundation.h>
+
 #import "PermissiveOperations.h"
+#import "PermissiveScoringMatrix.h"
 
 #define ScoringSegmentLenght 3
 
 @protocol PermissiveResearchDatasource <NSObject>
 @required
 -(void)rebuildDatabase;
+
+@optional
+-(NSInteger)customCostForEvent:(ScoringEvent)event;
 @end
 
 @protocol PermissiveResearchDelegate <NSObject>
@@ -32,7 +37,6 @@
 - (void)addRetainedObjet:(id)obj forKey:(NSString *)key;
 - (void)addManagedObjet:(id)obj forKey:(NSString *)key;
 - (NSMutableSet *)objectsForSegment:(NSString *)key;
-
 - (void)searchString:(NSString *)searchedString withOperation:(ScoringOperationType)operationType;
 
 @end

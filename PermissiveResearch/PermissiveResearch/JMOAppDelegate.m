@@ -7,7 +7,6 @@
 //
 
 #import "JMOAppDelegate.h"
-
 #import "JMOViewController.h"
 
 @implementation JMOAppDelegate
