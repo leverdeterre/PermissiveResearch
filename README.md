@@ -1,3 +1,7 @@
+[![Twitter](https://img.shields.io/badge/contact-@leverdeterre-green.svg)](http://twitter.com/leverdeterre)
+[![License MIT](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/leverdeterre/PermissiveResearch/blob/master/LICENCE)
+[![Cocoapods](http://img.shields.io/cocoapods/v/PermissiveResearch.svg)](https://github.com/leverdeterre/PermissiveResearch)
+
 PermissiveResearch
 ==================
 
