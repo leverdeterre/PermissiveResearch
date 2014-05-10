@@ -31,9 +31,9 @@ Advantages :
 |  Tolerated search  | 100 | Using PermissiveResearch (HeuristicScoringOperation*)  |
 |  Tolerated search  | 700 | Using PermissiveResearch (HeurexactScoringOperation*)  |
 
-*ExactScoringOperation : Make a complex and total analysis,
-*HeuristicScoringOperation : Scan using fragments (default size 3),
-*HeurexactScoringOperation : Scan using fragments (default size 3), then make a complex and total analysis of the best pre-selected objects.
+* ExactScoringOperation : Make a complex and total analysis,
+* HeuristicScoringOperation : Scan using fragments (default size 3),
+* HeurexactScoringOperation : Scan using fragments (default size 3), then make a complex and total analysis of the best pre-selected objects.
 
 ### Algorithms
 It's a custom implementation of the [Smith-Waterman algorithm][1].
