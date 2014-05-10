@@ -20,15 +20,16 @@ Advantages :
 
 ### Performance (iphone4)
 
-|  Type of search  | time (s) | data structure | 
+|  Type of search  | time (ms) | data structure | 
 | ------------- |:-------------:| -------------| 
-|  Exact search  | tbt | Using predicates      |
-|  Exact search  | tbt | Using PermissiveResearch (ExactScoringOperation)   |
-|  Exact search  | tbt | Using PermissiveResearch (HeuristicScoringOperation)   |
-|  Tolerated search  | impossible | Using predicates  |
-|  Tolerated search  | tbt | Using PermissiveResearch (ExactScoringOperation)    |
-|  Tolerated search  | tbt | Using PermissiveResearch (HeuristicScoringOperation)    |
-|  Tolerated search  | tbt | Using PermissiveResearch (HeurexactScoringOperation)    |
+|  Exact search  | 200 | Using predicates      |
+|  Exact search  | 2800 | Using PermissiveResearch (ExactScoringOperation)   |
+|  Exact search  | 100 | Using PermissiveResearch (HeuristicScoringOperation)  |
+|  Exact search  | 700 | Using PermissiveResearch (HeurexactScoringOperation)  |
+|  Tolerated search  | impossible.. | Using predicates  |
+|  Tolerated search  | 2800 | Using PermissiveResearch (ExactScoringOperation)   |
+|  Tolerated search  | 100 | Using PermissiveResearch (HeuristicScoringOperation)  |
+|  Tolerated search  | 700 | Using PermissiveResearch (HeurexactScoringOperation)  |
 
 ### Algorithm
 It's a custom implementation of the [Smith-Waterman algorithm][1].
