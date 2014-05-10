@@ -28,7 +28,6 @@
 		C25DFA79184A213F00B7BFA1 /* JMOTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C25DFA74184A213F00B7BFA1 /* JMOTableViewCell.m */; };
 		C25DFA7A184A213F00B7BFA1 /* UIView+WaitingView.m in Sources */ = {isa = PBXBuildFile; fileRef = C25DFA77184A213F00B7BFA1 /* UIView+WaitingView.m */; };
 		C25DFA7B184A213F00B7BFA1 /* JMOTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C25DFA78184A213F00B7BFA1 /* JMOTableViewCell.xib */; };
-		C25DFA7E184A218300B7BFA1 /* data50000.json in Resources */ = {isa = PBXBuildFile; fileRef = C25DFA7C184A218300B7BFA1 /* data50000.json */; };
 		C25DFA7F184A218300B7BFA1 /* data5000.json in Resources */ = {isa = PBXBuildFile; fileRef = C25DFA7D184A218300B7BFA1 /* data5000.json */; };
 		C25DFA81184A232500B7BFA1 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C25DFA80184A232500B7BFA1 /* CoreData.framework */; };
 /* End PBXBuildFile section */
@@ -77,7 +76,6 @@
 		C25DFA76184A213F00B7BFA1 /* UIView+WaitingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+WaitingView.h"; sourceTree = "<group>"; };
 		C25DFA77184A213F00B7BFA1 /* UIView+WaitingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WaitingView.m"; sourceTree = "<group>"; };
 		C25DFA78184A213F00B7BFA1 /* JMOTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JMOTableViewCell.xib; sourceTree = "<group>"; };
-		C25DFA7C184A218300B7BFA1 /* data50000.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = data50000.json; sourceTree = "<group>"; };
 		C25DFA7D184A218300B7BFA1 /* data5000.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = data5000.json; sourceTree = "<group>"; };
 		C25DFA80184A232500B7BFA1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -162,7 +160,6 @@
 			isa = PBXGroup;
 			children = (
 				C25DFA35184A205A00B7BFA1 /* PermissiveResearch-Info.plist */,
-				C25DFA7C184A218300B7BFA1 /* data50000.json */,
 				C25DFA7D184A218300B7BFA1 /* data5000.json */,
 				C25DFA39184A205A00B7BFA1 /* main.m */,
 				C25DFA3B184A205A00B7BFA1 /* PermissiveResearch-Prefix.pch */,
@@ -285,7 +282,6 @@
 			files = (
 				C25DFA63184A20EA00B7BFA1 /* JMOViewController.xib in Resources */,
 				C25DFA7F184A218300B7BFA1 /* data5000.json in Resources */,
-				C25DFA7E184A218300B7BFA1 /* data50000.json in Resources */,
 				C25DFA7B184A213F00B7BFA1 /* JMOTableViewCell.xib in Resources */,
 				C25DFA46184A205A00B7BFA1 /* Images.xcassets in Resources */,
 			);

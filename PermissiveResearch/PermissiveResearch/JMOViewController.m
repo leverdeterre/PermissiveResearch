@@ -40,7 +40,6 @@
     
     [[PermissiveResearchDatabase sharedDatabase] setDatasource:self];
     [[PermissiveResearchDatabase sharedDatabase] setDelegate:self];
-    
 }
 
 
@@ -67,6 +66,7 @@
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
     NSString *final = [textField.text stringByReplacingCharactersInRange:range withString:string];
+    //[self searchStringUsingPredicates:final];
     [self searchString:final];
     return YES;
 }
@@ -81,7 +81,22 @@
 {
     NSLog(@"Start search by matrix");
     [self.tableView addWaitingView];
-    [[PermissiveResearchDatabase sharedDatabase] searchString:searchedString withOperation:ScoringOperationTypeExact];
+    [[PermissiveResearchDatabase sharedDatabase] searchString:searchedString withOperation:ScoringOperationTypeHeuristic];
+}
+
+-(void)searchStringUsingPredicates:(NSString *)searchedString
+{
+    NSLog(@"Start search Using Predicates ");
+    NSPredicate *predicates = [NSCompoundPredicate orPredicateWithSubpredicates:
+                               @[
+                                 [NSPredicate predicateWithFormat:@"name == %@",searchedString],
+                                 [NSPredicate predicateWithFormat:@"gender == %@",searchedString],
+                                 [NSPredicate predicateWithFormat:@"company == %@",searchedString],
+                                 [NSPredicate predicateWithFormat:@"email == %@",searchedString]
+                                 ]];
+
+    /*NSArray *filteredList = */[self.searchedList filteredArrayUsingPredicate:predicates];
+    NSLog(@"End search Using Predicates ");
 }
 
 #pragma mark ScoringDatabaseDatasource
@@ -98,7 +113,26 @@
     NSMutableArray *list = [NSMutableArray new];
     for (NSDictionary *dict in json) {
         [list addObject:dict];
+        /*
+         {
+         "id": 0,
+         "guid": "2900f458-80ef-4b14-bbca-2c15ca81587c",
+         "isActive": true,
+         "balance": "$3,341.12",
+         "picture": "http://placehold.it/32x32",
+         "age": 27,
+         "name": "Naomi Pope",
+         "gender": "female",
+         "company": "ASIMILINE",
+         "email": "naomipope@asimiline.com",
+         "phone": "+1 (909) 412-3639"
+         },
+         */
         [[PermissiveResearchDatabase sharedDatabase] addRetainedObjet:dict forKey:[dict objectForKey:@"name"]];
+        [[PermissiveResearchDatabase sharedDatabase] addRetainedObjet:dict forKey:[dict objectForKey:@"gender"]];
+        [[PermissiveResearchDatabase sharedDatabase] addRetainedObjet:dict forKey:[dict objectForKey:@"company"]];
+        [[PermissiveResearchDatabase sharedDatabase] addRetainedObjet:dict forKey:[dict objectForKey:@"email"]];
+
     }
     
     self.searchedList = list;
