@@ -18,12 +18,17 @@ Advantages :
 - Search algorithm are easy customizable,
 - 3 algorithms already implemented, 
 
-### Performance
+### Performance (iphone4)
 
 |  Type of search  | time (s) | data structure | 
 | ------------- |:-------------:| -------------| 
 |  Exact search  | tbt | Using predicates      |
-
+|  Exact search  | tbt | Using PermissiveResearch (ExactScoringOperation)   |
+|  Exact search  | tbt | Using PermissiveResearch (HeuristicScoringOperation)   |
+|  Tolerated search  | impossible | Using predicates  |
+|  Tolerated search  | tbt | Using PermissiveResearch (ExactScoringOperation)    |
+|  Tolerated search  | tbt | Using PermissiveResearch (HeuristicScoringOperation)    |
+|  Tolerated search  | tbt | Using PermissiveResearch (HeurexactScoringOperation)    |
 
 ### Algorithm
 It's a custom implementation of the [Smith-Waterman algorithm][1].
