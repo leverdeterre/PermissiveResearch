@@ -18,20 +18,24 @@ Advantages :
 - Search algorithm are easy customizable,
 - 3 algorithms already implemented, 
 
-### Performance (iphone4)
+### Performances (on iphone4, searchig in 5000 objects 4 properties)
 
 |  Type of search  | time (ms) | data structure | 
 | ------------- |:-------------:| -------------| 
 |  Exact search  | 200 | Using predicates      |
-|  Exact search  | 2800 | Using PermissiveResearch (ExactScoringOperation)   |
-|  Exact search  | 100 | Using PermissiveResearch (HeuristicScoringOperation)  |
-|  Exact search  | 700 | Using PermissiveResearch (HeurexactScoringOperation)  |
+|  Exact search  | 2800 | Using PermissiveResearch (ExactScoringOperation*)   |
+|  Exact search  | 100 | Using PermissiveResearch (HeuristicScoringOperation*)  |
+|  Exact search  | 700 | Using PermissiveResearch (HeurexactScoringOperation*)  |
 |  Tolerated search  | impossible.. | Using predicates  |
-|  Tolerated search  | 2800 | Using PermissiveResearch (ExactScoringOperation)   |
-|  Tolerated search  | 100 | Using PermissiveResearch (HeuristicScoringOperation)  |
-|  Tolerated search  | 700 | Using PermissiveResearch (HeurexactScoringOperation)  |
+|  Tolerated search  | 2800 | Using PermissiveResearch (ExactScoringOperation*)   |
+|  Tolerated search  | 100 | Using PermissiveResearch (HeuristicScoringOperation*)  |
+|  Tolerated search  | 700 | Using PermissiveResearch (HeurexactScoringOperation*)  |
 
-### Algorithm
+*ExactScoringOperation : Make a complex and total analysis,
+*HeuristicScoringOperation : Scan using fragments (default size 3),
+*HeurexactScoringOperation : Scan using fragments (default size 3), then make a complex and total analysis of the best pre-selected objects.
+
+### Algorithms
 It's a custom implementation of the [Smith-Waterman algorithm][1].
 The purpose of the algorithm is to obtain the optimum local alignment.
 A similarity matrix is use to tolerate errors.
