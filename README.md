@@ -18,6 +18,12 @@ Advantages :
 - Search algorithm are easy customizable,
 - 3 algorithms already implemented, 
 
+### Performance
+
+|  Type of search  | time (s) | data structure | 
+| ------------- |:-------------:| -------------| 
+|  Exact search  | tbt | Using predicates      |
+
 
 ### Algorithm
 It's a custom implementation of the [Smith-Waterman algorithm][1].
