@@ -27,6 +27,6 @@ typedef enum {
 + (PermissiveScoringMatrix *)sharedScoringMatrix;
 - (void)loadDefaultValues;
 - (void)loadStructure;
--(NSInteger)defaultValuesForEvent:(ScoringEvent)event;
+- (NSInteger)defaultValuesForEvent:(ScoringEvent)event;
 
 @end

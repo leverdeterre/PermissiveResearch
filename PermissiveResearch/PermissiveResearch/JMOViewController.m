@@ -9,7 +9,6 @@
 #import "JMOViewController.h"
 
 #import "PermissiveScoringMatrix.h"
-#import "PermissiveObject.h"
 #import "PermissiveResearchDatabase.h"
 #import "PermissiveOperations.h"
 #import "PermissiveAlignementMethods.h"
@@ -81,7 +80,7 @@
 {
     NSLog(@"Start search by matrix");
     [self.tableView addWaitingView];
-    [[PermissiveResearchDatabase sharedDatabase] searchString:searchedString withOperation:ScoringOperationTypeHeuristic];
+    [[PermissiveResearchDatabase sharedDatabase] searchString:searchedString withOperation:ScoringOperationTypeExact];
 }
 
 -(void)searchStringUsingPredicates:(NSString *)searchedString
@@ -110,32 +109,9 @@
     id json = [NSJSONSerialization JSONObjectWithData:data
                                               options:kNilOptions
                                                 error:&error];
-    NSMutableArray *list = [NSMutableArray new];
-    for (NSDictionary *dict in json) {
-        [list addObject:dict];
-        /*
-         {
-         "id": 0,
-         "guid": "2900f458-80ef-4b14-bbca-2c15ca81587c",
-         "isActive": true,
-         "balance": "$3,341.12",
-         "picture": "http://placehold.it/32x32",
-         "age": 27,
-         "name": "Naomi Pope",
-         "gender": "female",
-         "company": "ASIMILINE",
-         "email": "naomipope@asimiline.com",
-         "phone": "+1 (909) 412-3639"
-         },
-         */
-        [[PermissiveResearchDatabase sharedDatabase] addRetainedObjet:dict forKey:[dict objectForKey:@"name"]];
-        [[PermissiveResearchDatabase sharedDatabase] addRetainedObjet:dict forKey:[dict objectForKey:@"gender"]];
-        [[PermissiveResearchDatabase sharedDatabase] addRetainedObjet:dict forKey:[dict objectForKey:@"company"]];
-        [[PermissiveResearchDatabase sharedDatabase] addRetainedObjet:dict forKey:[dict objectForKey:@"email"]];
-
-    }
     
-    self.searchedList = list;
+    [[PermissiveResearchDatabase sharedDatabase] addObjects:json forKeyPaths:@[@"name",@"gender",@"company",@"email"]];
+    self.searchedList = json;
 }
 
 -(NSInteger)customCostForEvent:(ScoringEvent)event
@@ -164,7 +140,7 @@
     return NSNotFound;
 }
 
-#pragma mark PermissiveResearchDelegate
+#pragma mark - PermissiveResearchDelegate
 
 -(void)searchCompletedWithResults:(NSArray *)results
 {

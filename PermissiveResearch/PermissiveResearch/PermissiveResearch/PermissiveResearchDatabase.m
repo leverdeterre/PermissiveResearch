@@ -8,8 +8,8 @@
 
 #import "PermissiveResearchDatabase.h"
 #import "PermissiveOperations.h"
-#import "PermissiveObject.h"
-#import <CoreData/CoreData.h>
+#import "PermissiveAbstractObject.h"
+#import "PermissiveObjects.h"
 
 @interface PermissiveResearchDatabase ()
 @property (strong, nonatomic) NSMutableDictionary *segments;  //NSDictionary of NSSet
@@ -118,36 +118,123 @@ static PermissiveResearchDatabase *mainDatabase = nil;
     [scoringMatrix loadStructure];
 }
 
-#pragma mark -
+#pragma mark - Add objects
 
-- (void)addRetainedObjet:(id)obj forKey:(NSString *)key
+- (void)addObject:(id)obj forKey:(NSString *)key
 {
     PermissiveObject *scoringObj = [PermissiveObject new];
     scoringObj.refencedObject = obj;
-    scoringObj.key = strdup([key UTF8String]);  //duplicate char* to be not constant
-    scoringObj.keyLenght = key.length;
-    scoringObj.scoringObjectType = ScoringObjectTypeClassic;
+    scoringObj.flag = strdup([key UTF8String]);  //duplicate char* to be not constant
+    scoringObj.flagLenght = key.length;
     [self.elements addObject:scoringObj];
     
     [self addSegmentsForKey:key forObject:scoringObj];
 }
 
-- (void)addManagedObjet:(NSManagedObject *)obj forKey:(NSString *)key
+- (void)addObjects:(NSArray *)objs forKey:(NSString *)key
 {
-    PermissiveObject *scoringObj = [PermissiveObject new];
-    scoringObj.key = strdup([key UTF8String]);  //duplicate char* to be not constant
-    scoringObj.keyLenght = key.length;
-    scoringObj.scoringObjectType = ScoringObjectTypeCoreData;
-    scoringObj.refencedObject = [obj objectID];
-    [self.elements addObject:scoringObj];
-    
-    [self addSegmentsForKey:key forObject:scoringObj];
+    [objs enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        [self addObject:obj forKey:key];
+    }];
 }
+
+- (void)addObjects:(NSArray *)objs forKeys:(NSArray *)keys
+{
+    [objs enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        [keys enumerateObjectsUsingBlock:^(id key, NSUInteger idx, BOOL *stop) {
+            [self addObject:obj forKey:key];
+        }];
+    }];
+}
+
+- (void)addObjects:(NSArray *)objs forKeyPaths:(NSArray *)KeyPaths
+{
+    [objs enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        [KeyPaths enumerateObjectsUsingBlock:^(id keyPath, NSUInteger idx, BOOL *stop) {
+            [self addObject:obj forKey:[obj valueForKey:keyPath]];
+        }];
+    }];
+}
+
+#pragma mark - Add CoreData objects
+
+- (void)addManagedObject:(NSManagedObject *)obj forKey:(NSString *)key
+{
+    [self addManagedObject:obj forKey:key isAlreadQueueProtected:NO];
+}
+
+- (void)addManagedObjects:(NSArray *)objs forKey:(NSString *)key
+{
+    NSArray *contexts = [objs valueForKeyPath:@"@distinctUnionOfObjects.managedObjectContext"];
+    NSAssert(contexts.count < 1, @"What? multiple managedObjectContext");
+    
+    NSManagedObjectContext *firstContext = [contexts firstObject];
+
+    //Need to check concurrency type?
+    [firstContext performBlockAndWait:^{
+        [objs enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            [self addManagedObject:obj forKey:key isAlreadQueueProtected:YES];
+        }];
+    }];
+}
+
+- (void)addManagedObject:(NSManagedObject *)obj forKey:(NSString *)key isAlreadQueueProtected:(BOOL)isAlreadQueueProtected
+{
+    if (NO == isAlreadQueueProtected) {
+        [obj.managedObjectContext performBlockAndWait:^{
+            [self addManagedObject:obj forKey:key isAlreadQueueProtected:YES];
+        }];
+        return;
+    } else {
+        PermissiveCoreDataObject *scoringObj = [PermissiveCoreDataObject new];
+        scoringObj.flag = strdup([[obj valueForKey:key] UTF8String]);  //duplicate char* to be not constant
+        scoringObj.flagLenght = key.length;
+        scoringObj.objectID = [obj objectID];
+        [self.elements addObject:scoringObj];
+        
+        [self addSegmentsForKey:key forObject:scoringObj];
+    }
+}
+
+- (void)addManagedObjects:(NSArray *)objs forKeys:(NSArray *)keys
+{
+    NSArray *contexts = [objs valueForKeyPath:@"@distinctUnionOfObjects.managedObjectContext"];
+    NSAssert(contexts.count < 1, @"What? multiple managedObjectContext");
+    
+    NSManagedObjectContext *firstContext = [contexts firstObject];
+    //Need to check concurrency type?
+    [firstContext performBlockAndWait:^{
+        [keys enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            [objs enumerateObjectsUsingBlock:^(id key, NSUInteger idx, BOOL *stop) {
+                [self addManagedObject:obj forKey:key isAlreadQueueProtected:YES];
+            }];
+        }];
+    }];
+}
+
+- (void)addManagedObjects:(NSArray *)objs forKeyPaths:(NSArray *)keyPaths
+{
+    NSArray *contexts = [objs valueForKeyPath:@"@distinctUnionOfObjects.managedObjectContext"];
+    NSAssert(contexts.count < 1, @"What? multiple managedObjectContext");
+    
+    NSManagedObjectContext *firstContext = [contexts firstObject];
+    //Need to check concurrency type?
+    [firstContext performBlockAndWait:^{
+        [objs enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            [keyPaths enumerateObjectsUsingBlock:^(id keyPath, NSUInteger idx, BOOL *stop) {
+                [self addManagedObject:obj forKey:[obj valueForKey:keyPath] isAlreadQueueProtected:YES];
+            }];
+        }];
+    }];
+}
+
+
+#pragma mark - Add segments
 
 - (void)addSegmentsForKey:(NSString *)key forObject:(id)obj
 {
     //NSAssert(key.length>ScoringSegmentLenght, @"key.length>ScoringSegmentLenght");
-    if (key.length<ScoringSegmentLenght) {
+    if (key.length < ScoringSegmentLenght) {
         [self addSegment:key forObject:obj];
         return;
     }
@@ -173,6 +260,8 @@ static PermissiveResearchDatabase *mainDatabase = nil;
 {
     return [self.segments objectForKey:[key lowercaseString]];
 }
+
+#pragma mark - Search methods
 
 - (void)searchString:(NSString *)searchedString withOperation:(ScoringOperationType)operationType
 {

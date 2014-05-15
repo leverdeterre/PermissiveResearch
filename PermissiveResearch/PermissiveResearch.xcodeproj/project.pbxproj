@@ -21,7 +21,7 @@
 		C25DFA59184A205A00B7BFA1 /* PermissiveResearchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C25DFA58184A205A00B7BFA1 /* PermissiveResearchTests.m */; };
 		C25DFA63184A20EA00B7BFA1 /* JMOViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C25DFA62184A20EA00B7BFA1 /* JMOViewController.xib */; };
 		C25DFA6F184A213300B7BFA1 /* PermissiveAlignementMethods.c in Sources */ = {isa = PBXBuildFile; fileRef = C25DFA65184A213200B7BFA1 /* PermissiveAlignementMethods.c */; };
-		C25DFA70184A213300B7BFA1 /* PermissiveObject.m in Sources */ = {isa = PBXBuildFile; fileRef = C25DFA68184A213300B7BFA1 /* PermissiveObject.m */; };
+		C25DFA70184A213300B7BFA1 /* PermissiveAbstractObject.m in Sources */ = {isa = PBXBuildFile; fileRef = C25DFA68184A213300B7BFA1 /* PermissiveAbstractObject.m */; };
 		C25DFA71184A213300B7BFA1 /* PermissiveOperations.m in Sources */ = {isa = PBXBuildFile; fileRef = C25DFA6A184A213300B7BFA1 /* PermissiveOperations.m */; };
 		C25DFA72184A213300B7BFA1 /* PermissiveResearchDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = C25DFA6C184A213300B7BFA1 /* PermissiveResearchDatabase.m */; };
 		C25DFA73184A213300B7BFA1 /* PermissiveScoringMatrix.m in Sources */ = {isa = PBXBuildFile; fileRef = C25DFA6E184A213300B7BFA1 /* PermissiveScoringMatrix.m */; };
@@ -30,6 +30,8 @@
 		C25DFA7B184A213F00B7BFA1 /* JMOTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C25DFA78184A213F00B7BFA1 /* JMOTableViewCell.xib */; };
 		C25DFA7F184A218300B7BFA1 /* data5000.json in Resources */ = {isa = PBXBuildFile; fileRef = C25DFA7D184A218300B7BFA1 /* data5000.json */; };
 		C25DFA81184A232500B7BFA1 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C25DFA80184A232500B7BFA1 /* CoreData.framework */; };
+		C2F06A8E1925565C00CED23B /* PermissiveCoreDataObject.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F06A8D1925565C00CED23B /* PermissiveCoreDataObject.m */; };
+		C2F06A91192556B900CED23B /* PermissiveObject.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F06A90192556B900CED23B /* PermissiveObject.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,8 +65,8 @@
 		C25DFA62184A20EA00B7BFA1 /* JMOViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JMOViewController.xib; sourceTree = "<group>"; };
 		C25DFA65184A213200B7BFA1 /* PermissiveAlignementMethods.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = PermissiveAlignementMethods.c; sourceTree = "<group>"; };
 		C25DFA66184A213300B7BFA1 /* PermissiveAlignementMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PermissiveAlignementMethods.h; sourceTree = "<group>"; };
-		C25DFA67184A213300B7BFA1 /* PermissiveObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PermissiveObject.h; sourceTree = "<group>"; };
-		C25DFA68184A213300B7BFA1 /* PermissiveObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PermissiveObject.m; sourceTree = "<group>"; };
+		C25DFA67184A213300B7BFA1 /* PermissiveAbstractObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PermissiveAbstractObject.h; sourceTree = "<group>"; };
+		C25DFA68184A213300B7BFA1 /* PermissiveAbstractObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PermissiveAbstractObject.m; sourceTree = "<group>"; };
 		C25DFA69184A213300B7BFA1 /* PermissiveOperations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PermissiveOperations.h; sourceTree = "<group>"; };
 		C25DFA6A184A213300B7BFA1 /* PermissiveOperations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PermissiveOperations.m; sourceTree = "<group>"; };
 		C25DFA6B184A213300B7BFA1 /* PermissiveResearchDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PermissiveResearchDatabase.h; sourceTree = "<group>"; };
@@ -78,6 +80,14 @@
 		C25DFA78184A213F00B7BFA1 /* JMOTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JMOTableViewCell.xib; sourceTree = "<group>"; };
 		C25DFA7D184A218300B7BFA1 /* data5000.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = data5000.json; sourceTree = "<group>"; };
 		C25DFA80184A232500B7BFA1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		C2F06A8C1925565C00CED23B /* PermissiveCoreDataObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PermissiveCoreDataObject.h; sourceTree = "<group>"; };
+		C2F06A8D1925565C00CED23B /* PermissiveCoreDataObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PermissiveCoreDataObject.m; sourceTree = "<group>"; };
+		C2F06A8F192556B900CED23B /* PermissiveObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PermissiveObject.h; sourceTree = "<group>"; };
+		C2F06A90192556B900CED23B /* PermissiveObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PermissiveObject.m; sourceTree = "<group>"; };
+		C2F06A931925570100CED23B /* PermissiveObjects.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PermissiveObjects.h; sourceTree = "<group>"; };
+		C2F06A9519255DD800CED23B /* PermissiveResearchDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PermissiveResearchDelegate.h; sourceTree = "<group>"; };
+		C2F06A9619255E0F00CED23B /* PermissiveResearchDatasource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PermissiveResearchDatasource.h; sourceTree = "<group>"; };
+		C2F06A9719255E5F00CED23B /* PermissiveResearch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PermissiveResearch.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -188,19 +198,43 @@
 		C25DFA64184A213200B7BFA1 /* PermissiveResearch */ = {
 			isa = PBXGroup;
 			children = (
-				C25DFA66184A213300B7BFA1 /* PermissiveAlignementMethods.h */,
-				C25DFA65184A213200B7BFA1 /* PermissiveAlignementMethods.c */,
-				C25DFA67184A213300B7BFA1 /* PermissiveObject.h */,
-				C25DFA68184A213300B7BFA1 /* PermissiveObject.m */,
+				C2F06A9419255DB200CED23B /* PermissiveSearchC */,
+				C2F06A92192556C200CED23B /* PermissiveObjects */,
+				C2F06A931925570100CED23B /* PermissiveObjects.h */,
+				C2F06A9719255E5F00CED23B /* PermissiveResearch.h */,
+				C2F06A9519255DD800CED23B /* PermissiveResearchDelegate.h */,
+				C2F06A9619255E0F00CED23B /* PermissiveResearchDatasource.h */,
 				C25DFA69184A213300B7BFA1 /* PermissiveOperations.h */,
 				C25DFA6A184A213300B7BFA1 /* PermissiveOperations.m */,
 				C25DFA6B184A213300B7BFA1 /* PermissiveResearchDatabase.h */,
 				C25DFA6C184A213300B7BFA1 /* PermissiveResearchDatabase.m */,
-				C25DFA6D184A213300B7BFA1 /* PermissiveScoringMatrix.h */,
-				C25DFA6E184A213300B7BFA1 /* PermissiveScoringMatrix.m */,
 			);
 			name = PermissiveResearch;
 			path = PermissiveResearch/PermissiveResearch;
+			sourceTree = "<group>";
+		};
+		C2F06A92192556C200CED23B /* PermissiveObjects */ = {
+			isa = PBXGroup;
+			children = (
+				C25DFA67184A213300B7BFA1 /* PermissiveAbstractObject.h */,
+				C25DFA68184A213300B7BFA1 /* PermissiveAbstractObject.m */,
+				C2F06A8C1925565C00CED23B /* PermissiveCoreDataObject.h */,
+				C2F06A8D1925565C00CED23B /* PermissiveCoreDataObject.m */,
+				C2F06A8F192556B900CED23B /* PermissiveObject.h */,
+				C2F06A90192556B900CED23B /* PermissiveObject.m */,
+			);
+			name = PermissiveObjects;
+			sourceTree = "<group>";
+		};
+		C2F06A9419255DB200CED23B /* PermissiveSearchC */ = {
+			isa = PBXGroup;
+			children = (
+				C25DFA66184A213300B7BFA1 /* PermissiveAlignementMethods.h */,
+				C25DFA65184A213200B7BFA1 /* PermissiveAlignementMethods.c */,
+				C25DFA6D184A213300B7BFA1 /* PermissiveScoringMatrix.h */,
+				C25DFA6E184A213300B7BFA1 /* PermissiveScoringMatrix.m */,
+			);
+			name = PermissiveSearchC;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -303,11 +337,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				C25DFA71184A213300B7BFA1 /* PermissiveOperations.m in Sources */,
-				C25DFA70184A213300B7BFA1 /* PermissiveObject.m in Sources */,
+				C2F06A8E1925565C00CED23B /* PermissiveCoreDataObject.m in Sources */,
+				C25DFA70184A213300B7BFA1 /* PermissiveAbstractObject.m in Sources */,
 				C25DFA79184A213F00B7BFA1 /* JMOTableViewCell.m in Sources */,
 				C25DFA3A184A205A00B7BFA1 /* main.m in Sources */,
 				C25DFA6F184A213300B7BFA1 /* PermissiveAlignementMethods.c in Sources */,
 				C25DFA7A184A213F00B7BFA1 /* UIView+WaitingView.m in Sources */,
+				C2F06A91192556B900CED23B /* PermissiveObject.m in Sources */,
 				C25DFA72184A213300B7BFA1 /* PermissiveResearchDatabase.m in Sources */,
 				C25DFA73184A213300B7BFA1 /* PermissiveScoringMatrix.m in Sources */,
 				C25DFA44184A205A00B7BFA1 /* JMOViewController.m in Sources */,

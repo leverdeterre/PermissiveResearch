@@ -1,5 +1,5 @@
 //
-//  PermissiveObject.h
+//  PermissiveCoreDataObject.h
 //  PermissiveResearch
 //
 //  Created by Jerome Morissard on 5/15/14.
@@ -8,8 +8,8 @@
 
 #import "PermissiveAbstractObject.h"
 
-@interface PermissiveObject : PermissiveAbstractObject
+@interface PermissiveCoreDataObject : PermissiveAbstractObject
 
-@property (strong, nonatomic) id refencedObject;
+@property (strong, nonatomic) NSManagedObjectID *objectID;
 
 @end

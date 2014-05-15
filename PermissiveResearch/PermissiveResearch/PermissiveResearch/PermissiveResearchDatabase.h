@@ -7,24 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreData/CoreData.h>
 
-#import "PermissiveOperations.h"
-#import "PermissiveScoringMatrix.h"
+#import "PermissiveResearch.h"
 
 #define ScoringSegmentLenght 3
-
-@protocol PermissiveResearchDatasource <NSObject>
-@required
--(void)rebuildDatabase;
-
-@optional
--(NSInteger)customCostForEvent:(ScoringEvent)event;
-@end
-
-@protocol PermissiveResearchDelegate <NSObject>
-@required
--(void)searchCompletedWithResults:(NSArray *)results;
-@end
 
 @interface PermissiveResearchDatabase : NSObject
 
@@ -34,8 +21,16 @@
 
 + (PermissiveResearchDatabase *)sharedDatabase;
 
-- (void)addRetainedObjet:(id)obj forKey:(NSString *)key;
-- (void)addManagedObjet:(id)obj forKey:(NSString *)key;
+- (void)addObject:(id)obj forKey:(NSString *)key;
+- (void)addObjects:(NSArray *)obj forKey:(NSString *)key;
+- (void)addObjects:(NSArray *)objs forKeys:(NSArray *)keys;
+- (void)addObjects:(NSArray *)objs forKeyPaths:(NSArray *)KeyPaths;
+
+- (void)addManagedObject:(NSManagedObject *)obj forKey:(NSString *)key;
+- (void)addManagedObjects:(NSArray *)objs forKey:(NSString *)key;
+- (void)addManagedObjects:(NSArray *)objs forKeys:(NSArray *)keys;
+- (void)addManagedObjects:(NSArray *)objs forKeyPaths:(NSArray *)KeyPaths;
+
 - (NSMutableSet *)objectsForSegment:(NSString *)key;
 - (void)searchString:(NSString *)searchedString withOperation:(ScoringOperationType)operationType;
 
