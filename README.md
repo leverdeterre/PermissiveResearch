@@ -46,9 +46,21 @@ A similarity matrix is use to tolerate errors.
 [[PermissiveResearchDatabase sharedDatabase] setDatasource:self];
 ```
 
-### Datasource method to fill your search database
+### Datasource methods to fill your search database
 ```objective-c
 -(void)rebuildDatabase
+```
+
+```objective-c
+- (void)addObject:(id)obj forKey:(NSString *)key;
+- (void)addObjects:(NSArray *)obj forKey:(NSString *)key;
+- (void)addObjects:(NSArray *)objs forKeys:(NSArray *)keys;
+- (void)addObjects:(NSArray *)objs forKeyPaths:(NSArray *)KeyPaths;
+
+- (void)addManagedObject:(NSManagedObject *)obj forKey:(NSString *)key;
+- (void)addManagedObjects:(NSArray *)objs forKey:(NSString *)key;
+- (void)addManagedObjects:(NSArray *)objs forKeys:(NSArray *)keys;
+- (void)addManagedObjects:(NSArray *)objs forKeyPaths:(NSArray *)KeyPaths;
 ```
 
 Example :
@@ -64,13 +76,9 @@ Example :
     id json = [NSJSONSerialization JSONObjectWithData:data
                                               options:kNilOptions
                                                 error:&error];
-    NSMutableArray *list = [NSMutableArray new];
-    for (NSDictionary *dict in json) {
-        [list addObject:dict];
-        [[PermissiveResearchDatabase sharedDatabase] addRetainedObjet:dict forKey:[dict objectForKey:@"name"]];
-    }
     
-    self.searchedList = list;
+    [[PermissiveResearchDatabase sharedDatabase] addObjects:json forKeyPaths:@[@"name",@"gender",@"company",@"email"]];
+    self.searchedList = json;
 }
 ```
 
