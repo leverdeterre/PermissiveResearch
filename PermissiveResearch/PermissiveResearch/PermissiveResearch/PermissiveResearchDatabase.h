@@ -32,6 +32,8 @@
 - (void)addManagedObjects:(NSArray *)objs forKeyPaths:(NSArray *)KeyPaths;
 
 - (NSMutableSet *)objectsForSegment:(NSString *)key;
+
 - (void)searchString:(NSString *)searchedString withOperation:(ScoringOperationType)operationType;
+- (void)searchString:(NSString *)searchedString withOperation:(ScoringOperationType)operationType completionBlock:(SearchCompletionBlock)block;
 
 @end

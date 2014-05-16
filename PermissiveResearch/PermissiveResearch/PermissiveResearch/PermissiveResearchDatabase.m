@@ -265,8 +265,13 @@ static PermissiveResearchDatabase *mainDatabase = nil;
 
 - (void)searchString:(NSString *)searchedString withOperation:(ScoringOperationType)operationType
 {
-    [[ScoringOperationQueue mainQueue] cancelAllOperations];
+    [self searchString:searchedString withOperation:operationType completionBlock:NULL];
+}
 
+- (void)searchString:(NSString *)searchedString withOperation:(ScoringOperationType)operationType completionBlock:(SearchCompletionBlock)block
+{
+    [[ScoringOperationQueue mainQueue] cancelAllOperations];
+    
     ExactScoringOperation *operation;
     if (operationType == ScoringOperationTypeExact) {
         operation = [ExactScoringOperation new];
@@ -279,14 +284,17 @@ static PermissiveResearchDatabase *mainDatabase = nil;
     }
     
     operation.searchedString = searchedString;
-    SearchCompletionBlock block = ^(NSArray *results) {
+    SearchCompletionBlock customBlock = ^(NSArray *results) {
         if ([self.delegate respondsToSelector:@selector(searchCompletedWithResults:)]) {
             [self.delegate searchCompletedWithResults:results];
+        } else if (block) {
+            block(results);
         }
     };
     
-    [operation setCustomCompletionBlock:block];
+    [operation setCustomCompletionBlock:customBlock];
     [[ScoringOperationQueue mainQueue] addOperation:operation];
+    
 }
 
 @end
