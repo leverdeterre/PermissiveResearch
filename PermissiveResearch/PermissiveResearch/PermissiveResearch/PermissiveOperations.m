@@ -60,13 +60,21 @@
         
         JMOLog(@"Searching -> Done ");
         
-        //Sorting
+        NSArray *findedElements;
         NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"score" ascending:NO];
-        NSArray *findedElements = [[[PermissiveResearchDatabase sharedDatabase].elements sortedArrayUsingDescriptors:@[sortDescriptor]] subarrayWithRange:NSMakeRange(0, 20)];
+
+        //Sorting
+        if ([PermissiveResearchDatabase sharedDatabase].elements.count > 20) {
+            findedElements = [[[PermissiveResearchDatabase sharedDatabase].elements sortedArrayUsingDescriptors:@[sortDescriptor]] subarrayWithRange:NSMakeRange(0, 20)];
+        } else {
+            findedElements = [[PermissiveResearchDatabase sharedDatabase].elements sortedArrayUsingDescriptors:@[sortDescriptor]];
+        }
         
         //LOG MAX
-        PermissiveAbstractObject *obj = [findedElements objectAtIndex:0];
-        logCalculatedMatrix([self.searchedString UTF8String], obj.flag, (int)taille, obj.flagLenght, [PermissiveScoringMatrix sharedScoringMatrix].structRepresentation);
+        if (findedElements.count > 0) {
+            PermissiveAbstractObject *obj = [findedElements objectAtIndex:0];
+            logCalculatedMatrix([self.searchedString UTF8String], obj.flag, (int)taille, obj.flagLenght, [PermissiveScoringMatrix sharedScoringMatrix].structRepresentation);
+        }
         
         if(self.customCompletionBlock) {
             self.customCompletionBlock(findedElements);
@@ -120,16 +128,23 @@
         
         JMOLog(@"Searching -> Done ");
     
-        //Sorting
+        NSArray *findedElements;
         NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"score" ascending:NO];
-        NSArray *findedElements = [[[PermissiveResearchDatabase sharedDatabase].elements sortedArrayUsingDescriptors:@[sortDescriptor]] subarrayWithRange:NSMakeRange(0, 20)];
-        
+        //Sorting
+        if ([PermissiveResearchDatabase sharedDatabase].elements.count > 20) {
+            findedElements = [[[PermissiveResearchDatabase sharedDatabase].elements sortedArrayUsingDescriptors:@[sortDescriptor]] subarrayWithRange:NSMakeRange(0, 20)];
+        } else {
+            findedElements = [[PermissiveResearchDatabase sharedDatabase].elements sortedArrayUsingDescriptors:@[sortDescriptor]];
+        }
 
         //LOG MAX
-        NSUInteger taille = self.searchedString.length;
-        PermissiveAbstractObject *obj = [findedElements objectAtIndex:0];
-        logCalculatedMatrix([self.searchedString UTF8String], obj.flag, (int)taille, obj.flagLenght, [PermissiveScoringMatrix sharedScoringMatrix].structRepresentation);
-        
+        if (findedElements.count > 0) {
+            NSUInteger taille = self.searchedString.length;
+            PermissiveAbstractObject *obj = [findedElements objectAtIndex:0];
+            logCalculatedMatrix([self.searchedString UTF8String], obj.flag, (int)taille, obj.flagLenght, [PermissiveScoringMatrix sharedScoringMatrix].structRepresentation);
+            
+        }
+
         if(self.customCompletionBlock) {
             self.customCompletionBlock(findedElements);
         }
@@ -200,12 +215,20 @@
             
         }];
         
-        NSArray *findedElements = [[arrayOfElemets sortedArrayUsingDescriptors:@[sortDescriptor]] subarrayWithRange:NSMakeRange(0, 20)];
+        NSArray *findedElements;
+        if (arrayOfElemets.count > 20) {
+            findedElements = [[arrayOfElemets sortedArrayUsingDescriptors:@[sortDescriptor]] subarrayWithRange:NSMakeRange(0, 20)];
+        } else {
+            findedElements = [arrayOfElemets sortedArrayUsingDescriptors:@[sortDescriptor]];
+        }
         
         //LOG MAX
-        PermissiveAbstractObject *obj = [findedElements objectAtIndex:0];
-        logCalculatedMatrix([self.searchedString UTF8String], obj.flag, (int)taille, obj.flagLenght, [PermissiveScoringMatrix sharedScoringMatrix].structRepresentation);
-        
+        if (findedElements.count > 0) {
+            PermissiveAbstractObject *obj = [findedElements objectAtIndex:0];
+            logCalculatedMatrix([self.searchedString UTF8String], obj.flag, (int)taille, obj.flagLenght, [PermissiveScoringMatrix sharedScoringMatrix].structRepresentation);
+            
+        }
+
         if(self.customCompletionBlock) {
             self.customCompletionBlock(findedElements);
         }
