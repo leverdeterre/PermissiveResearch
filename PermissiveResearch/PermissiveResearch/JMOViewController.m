@@ -16,6 +16,8 @@
 #import "JMOTableViewCell.h"
 #import "UIView+WaitingView.h"
 
+#import "PermissiveObject.h"
+
 @interface JMOViewController () <UITableViewDataSource,UITextFieldDelegate, PermissiveResearchDatasource, PermissiveResearchDelegate>
 @property (strong, nonatomic) NSMutableArray *allElements;
 @property (strong, nonatomic) NSArray *findedElements;
@@ -53,10 +55,18 @@
 {
     JMOTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"JMOTableViewCell"];
     
-    PermissiveObject *obj = [self.findedElements objectAtIndex:indexPath.row];
-    NSDictionary *dict = [obj refencedObject];
-    cell.labelName.text = [dict objectForKey:@"name"];
-    cell.labelScore.text = [NSString stringWithFormat:@"%d", obj.score];
+    id obj = [self.findedElements objectAtIndex:indexPath.row];
+    if ([obj isKindOfClass:[PermissiveCoreDataObject class]]) {
+        PermissiveCoreDataObject *permissiveObj = (PermissiveCoreDataObject *)obj;
+        NSLog(@"You call load your ManagedObject using permissiveObj.objectID with your mainThread context");
+        
+    } else if ([obj isKindOfClass:[PermissiveObject class]]) {
+        PermissiveObject *permissiveObj = (PermissiveObject *)obj;
+        NSDictionary *dict = [permissiveObj refencedObject];
+        cell.labelName.text = [dict objectForKey:@"name"];
+        cell.labelScore.text = [NSString stringWithFormat:@"%d", permissiveObj.score];
+    }
+    
     return cell;
 }
 
@@ -146,6 +156,11 @@
 {
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.tableView removeWaitingView];
+        
+#warning If your are filtering CoreData object. You can convert you results into your managedObject
+        //PermissiveCoreDataObject *permissiveObj = (PermissiveCoreDataObject *)obj;
+        //NSLog(@"You call load your ManagedObject using permissiveObj.objectID with your mainThread context");
+        
         self.findedElements = results;
         [self.tableView reloadData];
         NSLog(@"End search by matrix");

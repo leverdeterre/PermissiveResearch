@@ -222,7 +222,7 @@ static PermissiveResearchDatabase *mainDatabase = nil;
     [firstContext performBlockAndWait:^{
         [objs enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
             [keyPaths enumerateObjectsUsingBlock:^(id keyPath, NSUInteger idx, BOOL *stop) {
-                [self addManagedObject:obj forKey:[obj valueForKey:keyPath] isAlreadQueueProtected:YES];
+                [self addManagedObject:obj forKey:keyPath isAlreadQueueProtected:YES];
             }];
         }];
     }];
