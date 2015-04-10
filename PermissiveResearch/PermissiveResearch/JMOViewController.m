@@ -65,6 +65,7 @@
         NSDictionary *dict = [permissiveObj refencedObject];
         cell.labelName.text = [dict objectForKey:@"name"];
         cell.labelScore.text = [NSString stringWithFormat:@"%d", permissiveObj.score];
+        cell.otherInfos.text = [NSString stringWithFormat:@"%@ - %@", [dict objectForKey:@"gender"],[dict objectForKey:@"company"]];
     }
     
     return cell;

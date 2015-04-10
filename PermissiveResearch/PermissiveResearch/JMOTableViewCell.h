@@ -11,6 +11,7 @@
 @interface JMOTableViewCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *labelName;
+@property (weak, nonatomic) IBOutlet UILabel *otherInfos;
 @property (weak, nonatomic) IBOutlet UILabel *labelScore;
 
 @end
